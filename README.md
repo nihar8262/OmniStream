@@ -1,6 +1,6 @@
 # OmniStream — Universal Social Media & Document Downloader
 
-![OmniStream Banner](public/globe.svg)
+<!-- ![OmniStream Banner](public/globe.svg) -->
 
 **OmniStream** is a modern, high-performance web application for resolving and downloading public media from **Instagram** and **LinkedIn**. It allows users to preview photos, reels, videos, and multi-page carousel slides, download items individually, bundle selections into high-speed ZIP archives, or convert image sets into multi-page PDF documents.
 
