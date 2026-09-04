@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "title": "OmniStream",
+    "tagline": "Descargador de Medios",
+    "howItWorks": "Cómo Funciona",
+    "limits": "Límites",
+    "terms": "Términos y Condiciones"
+  },
+  "hero": {
+    "badge": "Rápido • Privado • Alta Definición",
+    "instagramTab": "Instagram",
+    "linkedinTab": "LinkedIn",
+    "titleInstagram": "Descarga Fotos, Reels y Carruseles Públicos de Instagram",
+    "titleLinkedin": "Descarga Fotos y Videos Públicos de LinkedIn",
+    "subtitleInstagram": "Pega el enlace de cualquier publicación o reel público de Instagram para previsualizar, seleccionar fotos o videos, descargar individualmente, empaquetar en ZIP o convertir a PDF.",
+    "subtitleLinkedin": "Pega el enlace de cualquier publicación o carrusel de LinkedIn para previsualizar fotos o videos en alta resolución, descargar individualmente, empaquetar en ZIP o exportar a PDF.",
+    "title": "Descarga Fotos, Reels y Videos Públicos de Instagram y LinkedIn",
+    "subtitle": "Pega el enlace de cualquier publicación de Instagram o LinkedIn para previsualizar, descargar fotos o videos, empaquetar en ZIP o convertir a PDF.",
+    "inputPlaceholderInstagram": "Pega el enlace de Instagram (ej. instagram.com/p/...)",
+    "inputPlaceholderLinkedin": "Pega el enlace de LinkedIn (ej. linkedin.com/feed/update/...)",
+    "inputPlaceholder": "Pega el enlace de la publicación (ej. instagram.com/p/... o linkedin.com/feed/update/...)",
+    "pasteButton": "Pegar",
+    "searchButton": "Buscar Medios",
+    "searching": "Buscando...",
+    "clear": "Limpiar"
+  },
+  "grid": {
+    "foundTitle": "Se encontraron {count, plural, =1 {1 elemento} other {# elementos}}",
+    "byAuthor": "por",
+    "selectAll": "Seleccionar Todos",
+    "deselectAll": "Deseleccionar Todos",
+    "selectedCount": "{count} de {total} seleccionados (máx. 20 por lote)",
+    "photoBadge": "Foto",
+    "videoBadge": "Reel / Video",
+    "downloadSingle": "Descargar",
+    "clickToPreview": "Clic para previsualizar en grande",
+    "maxSelectionNotice": "Límite de selección alcanzado (máx. 20 elementos para ZIP / PDF)."
+  },
+  "previewModal": {
+    "itemCount": "Elemento {current} de {total}",
+    "prev": "Elemento anterior",
+    "next": "Elemento siguiente",
+    "close": "Cerrar vista previa",
+    "select": "Seleccionar elemento",
+    "selected": "Seleccionado",
+    "download": "Descargar",
+    "keyboardHint": "Usa las teclas ← → para navegar, ESC para cerrar"
+  },
+  "toolbar": {
+    "selectedItems": "{count} seleccionados",
+    "downloadSelected": "Descargar Seleccionados",
+    "downloadZip": "Descargar como ZIP",
+    "convertToPdf": "Convertir a PDF",
+    "generatingZip": "Creando ZIP...",
+    "generatingPdf": "Generando PDF...",
+    "downloading": "Descargando...",
+    "pdfOnlyImagesTooltip": "La conversión a PDF requiere al menos una imagen seleccionada (los videos se omiten)."
+  },
+  "termsModal": {
+    "title": "Confirmación de Términos de Uso",
+    "description": "Antes de descargar, por favor confirma que respetas los derechos del creador.",
+    "affirmation": "Afirmo que tengo el derecho o permiso para descargar este contenido y lo usaré de acuerdo con las leyes de derechos de autor y los derechos del creador original.",
+    "continue": "Aceptar y Continuar Descarga",
+    "cancel": "Cancelar"
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Obtén tu contenido favorito de Instagram en 5 sencillos pasos.",
+    "step1Title": "Encuentra la Publicación",
+    "step1Desc": "Abre Instagram y ve a la publicación, reel o carrusel público que deseas descargar.",
+    "step2Title": "Copia el Enlace",
+    "step2Desc": "Toca los tres puntos (...) o el icono de compartir y selecciona 'Copiar enlace'.",
+    "step3Title": "Pega y Busca",
+    "step3Desc": "Pega la URL copiada en el campo de búsqueda arriba y haz clic en 'Buscar Medios'.",
+    "step4Title": "Elige tus Elementos",
+    "step4Desc": "Previsualiza las fotos o videos y marca o desmarca los elementos específicos que deseas conservar.",
+    "step5Title": "Exporta los Medios",
+    "step5Desc": "Descarga archivos individuales, empaqueta elementos en un archivo ZIP o convierte fotos a PDF."
+  },
+  "limits": {
+    "title": "Límites Operativos y Garantías",
+    "subtitle": "Diseñado con transparencia, velocidad y privacidad en mente.",
+    "limit1Title": "Solo Perfiles Públicos",
+    "limit1Desc": "No accedemos a cuentas privadas ni eludimos pantallas de inicio de sesión.",
+    "limit2Title": "Límite de 20 Elementos por Lote",
+    "limit2Desc": "Para garantizar descargas rápidas y fluidas, los paquetes ZIP y PDF tienen un límite de 20 elementos por lote.",
+    "limit3Title": "Cero Almacenamiento de Medios",
+    "limit3Desc": "El contenido se transmite directamente a tu navegador. No se almacena ninguna foto ni video en nuestros servidores.",
+    "limit4Title": "Límites de Uso Justo",
+    "limit4Desc": "La limitación de velocidad en memoria evita el abuso y garantiza la disponibilidad del servidor para todos."
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "subtitle": "Aviso Legal y Descargo de Responsabilidad",
+    "p1": "Esta herramienta de descarga está diseñada exclusivamente para contenido público y de libre acceso en Instagram.",
+    "p2": "No poseemos, almacenamos ni reclamamos derechos de autor sobre las fotos o videos descargados. Todos los derechos pertenecen a sus respectivos creadores.",
+    "p3": "Los usuarios son los únicos responsables del uso que hagan del material descargado. Esta herramienta no otorga licencias para redistribuir contenido de terceros.",
+    "trademark": "Instagram y el logo de Instagram son marcas registradas de Meta Platforms, Inc. Este proyecto es una herramienta independiente no afiliada ni respaldada por Meta Platforms, Inc."
+  },
+  "errors": {
+    "UNSUPPORTED_URL": "Enlace no válido. Pega un enlace público de Instagram (ej. instagram.com/p/...) o LinkedIn (ej. linkedin.com/feed/update/...)",
+    "UNSUPPORTED_INSTAGRAM_URL": "Enlace de Instagram no válido. Pega un enlace a una publicación o reel público (ej. https://www.instagram.com/p/...)",
+    "UNSUPPORTED_LINKEDIN_URL": "Enlace de LinkedIn no válido. Pega un enlace a una publicación o feed update (ej. https://www.linkedin.com/feed/update/...)",
+    "PRIVATE_OR_GATED": "Esta publicación pertenece a una cuenta privada. Solo se admiten publicaciones públicas.",
+    "NOT_FOUND": "Publicación no encontrada. Es posible que haya sido eliminada o que el enlace sea incorrecto.",
+    "RESOLVER_FAILED": "No se pudo extraer el contenido. El servicio puede estar temporalmente inaccesible.",
+    "RATE_LIMITED": "Límite de peticiones alcanzado. Espera unos segundos antes de volver a intentarlo.",
+    "CLIPBOARD_ERROR": "No se pudo leer el portapapeles. Pega el enlace manualmente."
+  },
+  "footer": {
+    "rights": "Todos los derechos pertenecen a los creadores de contenido originales.",
+    "tagline": "Creado con Next.js y diseño de cristal oscuro y oro."
+  }
+}

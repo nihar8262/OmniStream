@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "title": "OmniStream",
+    "tagline": "社交媒体与文档下载器",
+    "howItWorks": "使用指南",
+    "limits": "使用限制",
+    "terms": "服务条款"
+  },
+  "hero": {
+    "badge": "极速 • 隐私保护 • 原图超清 (HD)",
+    "instagramTab": "Instagram",
+    "linkedinTab": "LinkedIn 领英",
+    "titleInstagram": "下载公开 Instagram 图片、Reels 视频与轮播贴",
+    "titleLinkedin": "下载公开 LinkedIn 领英图片、文档幻灯片与视频",
+    "subtitleInstagram": "粘贴任何公开 Instagram 帖子或 Reels 链接，预览多图视频，自由选择下载、打包 ZIP 或转换为 PDF 文档。",
+    "subtitleLinkedin": "粘贴公开 LinkedIn 领英帖子或文档轮播链接，提取高清幻灯片原图，单张下载、批量打包 ZIP 或导出为 PDF。",
+    "title": "下载公开 Instagram 与 LinkedIn 领英图片、Reels 与视频",
+    "subtitle": "粘贴任何公开帖子链接，预览并选择特定图片或视频，单独下载、一键打包 ZIP 或转为 PDF。",
+    "inputPlaceholderInstagram": "粘贴 Instagram 帖子或 Reels 链接 (例如 instagram.com/p/...)",
+    "inputPlaceholderLinkedin": "粘贴 LinkedIn 领英帖子或更新链接 (例如 linkedin.com/posts/...)",
+    "inputPlaceholder": "粘贴帖子链接 (例如 instagram.com/p/... 或 linkedin.com/posts/...)",
+    "pasteButton": "粘贴",
+    "searchButton": "解析媒体",
+    "searching": "正在解析...",
+    "clear": "清除"
+  },
+  "grid": {
+    "foundTitle": "已解析出 {count} 个媒体项目",
+    "byAuthor": "作者：",
+    "selectAll": "全选",
+    "deselectAll": "取消全选",
+    "selectedCount": "已选择 {count} / {total} 项 (批量单次最多 20 项)",
+    "photoBadge": "图片",
+    "videoBadge": "视频 / Reels",
+    "downloadSingle": "下载",
+    "clickToPreview": "点击大图预览",
+    "maxSelectionNotice": "已达选择上限 (单次打包 ZIP / PDF 最多支持 20 个项目)。"
+  },
+  "previewModal": {
+    "itemCount": "第 {current} 项，共 {total} 项",
+    "prev": "上一项",
+    "next": "下一项",
+    "close": "关闭预览",
+    "select": "选择此项",
+    "selected": "已选择",
+    "download": "立即下载",
+    "keyboardHint": "支持键盘 ← → 键切换，按 ESC 退出预览"
+  },
+  "toolbar": {
+    "selectedItems": "已选 {count} 项",
+    "downloadSelected": "下载选中项",
+    "downloadZip": "打包为 ZIP 下载",
+    "convertToPdf": "转换为 PDF 文档",
+    "generatingZip": "正在打包 ZIP...",
+    "generatingPdf": "正在生成 PDF...",
+    "downloading": "下载中...",
+    "pdfOnlyImagesTooltip": "PDF 文档仅支持图片/幻灯片格式 (视频将自动跳过)。"
+  },
+  "termsModal": {
+    "title": "使用条款确认",
+    "description": "下载前，请确认您尊重原作者的知识产权与版权。",
+    "affirmation": "我声明我有权或已获许可下载此内容，并将严格遵守适用的版权法律以及原作者的相关权益进行使用。",
+    "continue": "同意并继续下载",
+    "cancel": "取消"
+  },
+  "howItWorks": {
+    "title": "操作步骤",
+    "subtitle": "只需 5 个简单步骤，即可轻松保存所需媒体内容。",
+    "step1Title": "查找帖子",
+    "step1Desc": "打开 Instagram 或 LinkedIn，找到您想要下载的公开帖子、视频或轮播幻灯片。",
+    "step2Title": "复制链接",
+    "step2Desc": "点击帖子右上角的分享按钮或三点图标，选择“复制链接”。",
+    "step3Title": "粘贴并解析",
+    "step3Desc": "将复制的链接粘贴到上方的输入框中，然后点击“解析媒体”。",
+    "step4Title": "选择所需内容",
+    "step4Desc": "高清预览所有图片与视频，勾选您需要保存的特定项目。",
+    "step5Title": "导出媒体",
+    "step5Desc": "单张快速下载、批量打包为 ZIP 压缩包，或将多页幻灯片合并导出为 PDF。"
+  },
+  "limits": {
+    "title": "服务规格与隐私保障",
+    "subtitle": "专为高效、透明与全面隐私保护而设计。",
+    "limit1Title": "仅支持公开内容",
+    "limit1Desc": "我们无法也不会绕过私密账户、登录限制或需要授权的动态与故事。",
+    "limit2Title": "单次 20 项批量上限",
+    "limit2Desc": "为确保实时极速流式传输且无超时等待，每次打包 ZIP 或 PDF 上限为 20 个项目。",
+    "limit3Title": "零服务器持久存储",
+    "limit3Desc": "媒体文件直接从源服务器流式传输至您的浏览器，我们的服务器绝不存储任何图片或视频。",
+    "limit4Title": "公平速率保护",
+    "limit4Desc": "内存速率保护机制可防止恶意请求，保障所有访问者的稳定与流畅体验。"
+  },
+  "terms": {
+    "title": "条款与免责声明",
+    "subtitle": "法律声明与使用规范",
+    "p1": "本下载工具仅用于辅助获取公开、合法访问的 Instagram 和 LinkedIn 内容。",
+    "p2": "我们不对通过本工具获取的任何照片、视频或文本享有版权或所有权。所有知识产权均归属于其原始创作者和权利人。",
+    "p3": "用户对其下载媒体的使用行为承担全部责任。未经权利人明确许可，本工具不赋予任何转售、二次分发或重新发布的权利。",
+    "trademark": "Instagram 是 Meta Platforms, Inc. 的注册商标；LinkedIn 是 Microsoft Corporation 的注册商标。本工具为独立第三方应用，与上述公司无官方关联或赞助关系。"
+  },
+  "errors": {
+    "UNSUPPORTED_URL": "无效的链接格式。请粘贴公开的 Instagram (如 instagram.com/p/...) 或 LinkedIn 链接 (如 linkedin.com/posts/...)。",
+    "UNSUPPORTED_INSTAGRAM_URL": "无效的 Instagram 链接。请输入公开帖子或 Reels 链接。",
+    "UNSUPPORTED_LINKEDIN_URL": "无效的 LinkedIn 链接。请输入公开帖子或更新链接。",
+    "PRIVATE_OR_GATED": "该帖子来自私密账户或需要登录。我们仅支持公开内容。",
+    "NOT_FOUND": "未找到该帖子。它可能已被删除或链接有误。",
+    "RESOLVER_FAILED": "无法解析此帖子的媒体内容，远程服务可能暂时繁忙，请稍后重试。",
+    "RATE_LIMITED": "请求过于频繁，请稍候几秒钟后再试。",
+    "CLIPBOARD_ERROR": "无法读取剪贴板内容，请手动粘贴链接。"
+  },
+  "footer": {
+    "rights": "所有版权及商标归原内容创作者所有。",
+    "tagline": "基于 Next.js 极速现代架构打造。"
+  }
+}

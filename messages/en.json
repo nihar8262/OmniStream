@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "title": "OmniStream",
+    "tagline": "Media & Document Downloader",
+    "howItWorks": "How It Works",
+    "limits": "Limits",
+    "terms": "Terms & Conditions"
+  },
+  "hero": {
+    "badge": "Fast • Private • High Definition",
+    "instagramTab": "Instagram",
+    "linkedinTab": "LinkedIn",
+    "titleInstagram": "Download Public Instagram Photos, Reels & Carousels",
+    "titleLinkedin": "Download Public LinkedIn Post Photos & Videos",
+    "subtitleInstagram": "Paste any public Instagram post or reel link to preview, select specific photos or videos, download individually, pack into a ZIP, or convert to PDF.",
+    "subtitleLinkedin": "Paste any public LinkedIn post, feed update, or carousel link to preview high-res images and videos, download individually, bundle as ZIP, or export to PDF.",
+    "title": "Download Public Instagram & LinkedIn Photos, Reels & Videos",
+    "subtitle": "Paste any public Instagram post, reel, or LinkedIn update to preview, select specific photos or videos, download individually, pack into a ZIP, or convert to PDF.",
+    "inputPlaceholderInstagram": "Paste Instagram post or reel link (e.g. instagram.com/p/...)",
+    "inputPlaceholderLinkedin": "Paste LinkedIn post or update link (e.g. linkedin.com/feed/update/...)",
+    "inputPlaceholder": "Paste post link (e.g. instagram.com/p/... or linkedin.com/feed/update/...)",
+    "pasteButton": "Paste",
+    "searchButton": "Search Media",
+    "searching": "Searching...",
+    "clear": "Clear"
+  },
+  "grid": {
+    "foundTitle": "Found {count, plural, =1 {1 media item} other {# media items}}",
+    "byAuthor": "by",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "selectedCount": "{count} of {total} selected (max 20 for batch)",
+    "photoBadge": "Photo",
+    "videoBadge": "Reel / Video",
+    "downloadSingle": "Download",
+    "clickToPreview": "Click to preview large",
+    "maxSelectionNotice": "Selection limit reached (max 20 items for ZIP / PDF)."
+  },
+  "previewModal": {
+    "itemCount": "Item {current} of {total}",
+    "prev": "Previous item",
+    "next": "Next item",
+    "close": "Close preview",
+    "select": "Select item",
+    "selected": "Selected",
+    "download": "Download",
+    "keyboardHint": "Use ← → arrow keys to navigate, ESC to close"
+  },
+  "toolbar": {
+    "selectedItems": "{count} selected",
+    "downloadSelected": "Download Selected",
+    "downloadZip": "Download as ZIP",
+    "convertToPdf": "Convert to PDF",
+    "generatingZip": "Packing ZIP...",
+    "generatingPdf": "Generating PDF...",
+    "downloading": "Downloading...",
+    "pdfOnlyImagesTooltip": "PDF conversion requires at least one image selected (videos are skipped)."
+  },
+  "termsModal": {
+    "title": "Terms of Use Confirmation",
+    "description": "Before downloading, please confirm that you respect the creator's rights.",
+    "affirmation": "I affirm that I have the right or permission to download this content, and I will use it strictly in accordance with applicable copyright laws and the original creator's rights.",
+    "continue": "Agree & Continue Download",
+    "cancel": "Cancel"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Get your favorite Instagram media in 5 effortless steps.",
+    "step1Title": "Find the Post",
+    "step1Desc": "Open Instagram and navigate to the public post, reel, or carousel you wish to download.",
+    "step2Title": "Copy the Link",
+    "step2Desc": "Tap the three dots (...) or share icon on the post and select 'Copy Link'.",
+    "step3Title": "Paste and Search",
+    "step3Desc": "Paste the copied URL into the search box above and click 'Search Media'.",
+    "step4Title": "Choose Your Items",
+    "step4Desc": "Preview the photos or videos and check or uncheck the specific items you want to keep.",
+    "step5Title": "Export Media",
+    "step5Desc": "Download individual files, bundle selected items into a single ZIP, or convert photos to PDF."
+  },
+  "limits": {
+    "title": "Operational Limits & Guarantees",
+    "subtitle": "Designed with transparency, speed, and privacy in mind.",
+    "limit1Title": "Public Profiles Only",
+    "limit1Desc": "We do not access or bypass private accounts, login gates, or stories requiring authentication.",
+    "limit2Title": "20-Item Batch Cap",
+    "limit2Desc": "To guarantee instantaneous streaming without timeouts, ZIP and PDF bundles are capped at 20 items per batch.",
+    "limit3Title": "Zero Media Persistence",
+    "limit3Desc": "Media streams directly from origin to your browser. No photos, videos, or user data are stored on our servers.",
+    "limit4Title": "Fair Usage Limits",
+    "limit4Desc": "Soft in-memory rate limiting prevents spamming and ensures equal server availability for all visitors."
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "subtitle": "Legal Notice & Disclaimer",
+    "p1": "This media downloader is a utility tool designed exclusively for public, freely accessible Instagram content.",
+    "p2": "We do not own, store, or claim any copyright or intellectual property rights over any photos, videos, or captions accessed through this tool. All rights, titles, and trademarks belong exclusively to their respective creators and copyright owners.",
+    "p3": "Users are solely responsible for how they use downloaded media. This tool does not grant any license to redistribute, resell, or republish third-party content without explicit consent from the copyright holder.",
+    "trademark": "Instagram and the Instagram logo are registered trademarks of Meta Platforms, Inc. This application is an independent tool and is not affiliated with, sponsored, or endorsed by Meta Platforms, Inc. or Instagram."
+  },
+  "errors": {
+    "UNSUPPORTED_URL": "Invalid post link. Please paste a public Instagram (e.g. instagram.com/p/...) or LinkedIn post link (e.g. linkedin.com/feed/update/...)",
+    "UNSUPPORTED_INSTAGRAM_URL": "Invalid Instagram link. Please paste a link to a public post or reel (e.g., https://www.instagram.com/p/...)",
+    "UNSUPPORTED_LINKEDIN_URL": "Invalid LinkedIn link. Please paste a link to a public post or feed update (e.g., https://www.linkedin.com/feed/update/...)",
+    "PRIVATE_OR_GATED": "This post is from a private account or requires authentication. Only public posts are supported.",
+    "NOT_FOUND": "The post was not found. It may have been deleted or the link is incorrect.",
+    "RESOLVER_FAILED": "Unable to extract media from this post. The service might be temporarily unreachable.",
+    "RATE_LIMITED": "Rate limit exceeded. Please wait a few seconds before trying again.",
+    "CLIPBOARD_ERROR": "Unable to read clipboard. Please paste the link manually."
+  },
+  "footer": {
+    "rights": "All rights belong to the original content creators.",
+    "tagline": "Crafted with Next.js & Obsidian Gold Glassmorphism."
+  }
+}

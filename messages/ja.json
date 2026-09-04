@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "title": "OmniStream",
+    "tagline": "メディア＆ドキュメント ダウンローダー",
+    "howItWorks": "使い方",
+    "limits": "利用制限",
+    "terms": "利用規約"
+  },
+  "hero": {
+    "badge": "高速 • プライバシー保護 • 高画質 (HD)",
+    "instagramTab": "Instagram",
+    "linkedinTab": "LinkedIn",
+    "titleInstagram": "公開Instagram写真・リール・カルーセルをダウンロード",
+    "titleLinkedin": "公開LinkedIn写真・スライド・動画をダウンロード",
+    "subtitleInstagram": "公開Instagram投稿やリールのリンクを貼り付けてプレビューし、選択したメディアを個別保存、ZIPで一括保存、またはPDFに変換できます。",
+    "subtitleLinkedin": "公開LinkedIn投稿やスライドのリンクを貼り付けて高画質メディアをプレビューし、個別保存、ZIP一括保存、またはPDF変換が可能です。",
+    "title": "公開Instagram & LinkedInの写真・リール・動画をダウンロード",
+    "subtitle": "公開投稿リンクを貼り付けてプレビューし、写真や動画を選択して個別保存、ZIPで一括保存、またはPDFに変換できます。",
+    "inputPlaceholderInstagram": "Instagram投稿やリールのリンクを貼り付け (例: instagram.com/p/...)",
+    "inputPlaceholderLinkedin": "LinkedIn投稿やスライドのリンクを貼り付け (例: linkedin.com/posts/...)",
+    "inputPlaceholder": "投稿リンクを貼り付け (例: instagram.com/p/... または linkedin.com/posts/...)",
+    "pasteButton": "貼り付け",
+    "searchButton": "メディアを検索",
+    "searching": "検索中...",
+    "clear": "クリア"
+  },
+  "grid": {
+    "foundTitle": "{count} 件のメディアが見つかりました",
+    "byAuthor": "投稿者:",
+    "selectAll": "すべて選択",
+    "deselectAll": "選択解除",
+    "selectedCount": "{total} 件中 {count} 件選択中 (一括処理は最大20件)",
+    "photoBadge": "写真",
+    "videoBadge": "リール / 動画",
+    "downloadSingle": "ダウンロード",
+    "clickToPreview": "拡大プレビュー",
+    "maxSelectionNotice": "選択上限に達しました (ZIP / PDFの作成は最大20件まで)。"
+  },
+  "previewModal": {
+    "itemCount": "{total} 件中 {current} 件目",
+    "prev": "前へ",
+    "next": "次へ",
+    "close": "プレビューを閉じる",
+    "select": "選択",
+    "selected": "選択済み",
+    "download": "ダウンロード",
+    "keyboardHint": "矢印キー ← → で移動、ESCキーで閉じます"
+  },
+  "toolbar": {
+    "selectedItems": "{count} 件選択中",
+    "downloadSelected": "選択項目をダウンロード",
+    "downloadZip": "ZIPでダウンロード",
+    "convertToPdf": "PDFに変換",
+    "generatingZip": "ZIPを作成中...",
+    "generatingPdf": "PDFを作成中...",
+    "downloading": "ダウンロード中...",
+    "pdfOnlyImagesTooltip": "PDF変換には1枚以上の写真が必要です (動画はスキップされます)。"
+  },
+  "termsModal": {
+    "title": "利用規約の同意",
+    "description": "ダウンロードする前に、著作者の権利を尊重することを確認してください。",
+    "affirmation": "私はこのコンテンツをダウンロードする正当な権利または許可を有しており、著作権法および原作者の権利を厳守して利用することを誓約します。",
+    "continue": "同意してダウンロード",
+    "cancel": "キャンセル"
+  },
+  "howItWorks": {
+    "title": "使い方",
+    "subtitle": "5つの簡単なステップでお気に入りのメディアを保存できます。",
+    "step1Title": "投稿を探す",
+    "step1Desc": "InstagramまたはLinkedInを開き、保存したい公開投稿、リール、またはスライドを表示します。",
+    "step2Title": "リンクをコピー",
+    "step2Desc": "投稿のメニュー（...）または共有アイコンをタップして「リンクをコピー」を選択します。",
+    "step3Title": "貼り付けて検索",
+    "step3Desc": "コピーしたURLを上の検索ボックスに貼り付け、「メディアを検索」をクリックします。",
+    "step4Title": "保存するアイテムを選択",
+    "step4Desc": "写真や動画をプレビューし、保存したい項目にチェックを入れます。",
+    "step5Title": "エクスポート",
+    "step5Desc": "個別ダウンロード、選択したメディアをZIPで一括保存、または写真をPDFに変換します。"
+  },
+  "limits": {
+    "title": "制限事項と安心の仕様",
+    "subtitle": "透明性、処理速度、プライバシー保護を最優先に設計されています。",
+    "limit1Title": "公開アカウント専用",
+    "limit1Desc": "非公開アカウントやログイン・認証が必要なコンテンツにはアクセスしません。",
+    "limit2Title": "1回あたり最大20件の一括処理",
+    "limit2Desc": "タイムアウトのない高速ストリーミングを実現するため、ZIPおよびPDFの一括生成は20件までに制限されています。",
+    "limit3Title": "サーバーへのデータ非保存",
+    "limit3Desc": "メディアは送信元からブラウザに直接ストリーミングされ、サーバー上に写真や動画、個人データは一切保存されません。",
+    "limit4Title": "公平な利用制限",
+    "limit4Desc": "安定したサービス提供のため、過度な連続リクエストに対するレート制限を設けています。"
+  },
+  "terms": {
+    "title": "利用規約・免責事項",
+    "subtitle": "法的通知および利用ガイドライン",
+    "p1": "本ダウンローダーは、公開され自由にアクセス可能なInstagramおよびLinkedInコンテンツ専用のユーティリティツールです。",
+    "p2": "当サービスは、本ツールを通じてアクセスされる写真、動画、テキスト等の著作権や知的財産権を一切所有・主張しません。すべての権利は各コンテンツの原著作者に帰属します。",
+    "p3": "利用者はダウンロードしたメディアの利用方法について単独で責任を負うものとします。著作権者の明示的な許可なく再配布、販売、再公開することはできません。",
+    "trademark": "InstagramはMeta Platforms, Inc.の登録商標であり、LinkedInはMicrosoft Corporationの登録商標です。本ツールは独立したサードパーティツールであり、これらの企業と提携または支援関係にはありません。"
+  },
+  "errors": {
+    "UNSUPPORTED_URL": "無効なリンクです。公開されているInstagram (例: instagram.com/p/...) またはLinkedIn (例: linkedin.com/posts/...) のリンクを入力してください。",
+    "UNSUPPORTED_INSTAGRAM_URL": "無効なInstagramリンクです。公開投稿またはリールのリンクを入力してください。",
+    "UNSUPPORTED_LINKEDIN_URL": "無効なLinkedInリンクです。公開投稿またはアップデートのリンクを入力してください。",
+    "PRIVATE_OR_GATED": "この投稿は非公開アカウントまたはログインが必要です。公開投稿のみ対応しています。",
+    "NOT_FOUND": "投稿が見つかりませんでした。削除されたか、リンクが誤っている可能性があります。",
+    "RESOLVER_FAILED": "メディアを取得できませんでした。一時的にアクセスが混雑している可能性があります。",
+    "RATE_LIMITED": "リクエスト制限を超えました。数秒待ってから再度お試しください。",
+    "CLIPBOARD_ERROR": "クリップボードの読み取りに失敗しました。手動でリンクを貼り付けてください。"
+  },
+  "footer": {
+    "rights": "すべての権利は原著作者に帰属します。",
+    "tagline": "Next.jsと最新のモダンUIで構築されています。"
+  }
+}
