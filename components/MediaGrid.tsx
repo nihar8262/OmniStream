@@ -57,20 +57,20 @@ export function MediaGrid() {
   };
 
   return (
-    <section id="results-grid" className="w-full py-8 px-4 sm:px-6">
+    <section id="results-grid" className="w-full py-6 sm:py-8 px-3 sm:px-6 pb-28 sm:pb-24">
       <div className="container mx-auto max-w-5xl">
         {/* Post Metadata Card */}
         <div
-          className={`mb-6 rounded-2xl border p-5 backdrop-blur-xl transition-all ${
+          className={`mb-6 rounded-2xl border p-4 sm:p-5 backdrop-blur-xl transition-all ${
             isLinkedIn
               ? "border-sky-500/20 bg-sky-950/10"
               : "border-white/10 bg-white/[0.03]"
           }`}
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 min-w-0">
+            <div className="flex items-center gap-3 min-w-0">
               <div
-                className={`flex h-10 w-10 items-center justify-center rounded-full p-[1.5px] transition-all ${
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full p-[1.5px] transition-all ${
                   isLinkedIn
                     ? "bg-gradient-to-tr from-blue-600 via-sky-400 to-sky-200"
                     : "bg-gradient-to-tr from-[#d4af37] to-[#e8a33d]"
@@ -95,13 +95,13 @@ export function MediaGrid() {
                   />
                 </div>
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold text-white">
+              <div className="flex flex-col min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-wrap">
+                  <span className="text-sm font-bold text-white truncate">
                     @{manifest.author?.username || (isLinkedIn ? "linkedin_user" : "instagram_user")}
                   </span>
                   {manifest.author?.fullName && (
-                    <span className="text-xs text-neutral-400">
+                    <span className="text-xs text-neutral-400 truncate">
                       ({manifest.author.fullName})
                     </span>
                   )}
@@ -116,7 +116,7 @@ export function MediaGrid() {
               href={manifest.postUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 text-xs hover:underline transition-colors ${
+              className={`inline-flex items-center gap-1.5 text-xs hover:underline transition-colors shrink-0 ${
                 isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
               }`}
             >
@@ -127,7 +127,7 @@ export function MediaGrid() {
 
           {manifest.caption && (
             <div className="mt-3 pt-3 border-t border-white/5">
-              <p className="text-xs text-neutral-300 line-clamp-2 leading-relaxed italic">
+              <p className="text-xs text-neutral-300 line-clamp-2 leading-relaxed italic break-words">
                 "{manifest.caption}"
               </p>
             </div>
@@ -135,8 +135,8 @@ export function MediaGrid() {
         </div>
 
         {/* Selection Toolbar Header */}
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/5 bg-neutral-900/40 px-4 py-3">
-          <div className="flex items-center gap-3">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/5 bg-neutral-900/40 px-3 sm:px-4 py-2.5 sm:py-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <Button
               size="sm"
               variant="secondary"
@@ -169,7 +169,7 @@ export function MediaGrid() {
           </div>
 
           {manifest.itemCount > 20 && (
-            <div className="flex items-center gap-1.5 text-[11px] text-amber-400/90">
+            <div className="flex items-center gap-1.5 text-[11px] text-amber-400/90 w-full sm:w-auto">
               <Info className="h-3.5 w-3.5 shrink-0" />
               <span>{t("maxSelectionNotice")}</span>
             </div>

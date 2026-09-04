@@ -36,8 +36,8 @@ export function Footer() {
         </div>
 
         {/* Links & Switcher */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <div className="flex items-center gap-4 text-xs text-neutral-400">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-neutral-400">
             <a
               href="#how-it-works"
               className={`transition-colors ${

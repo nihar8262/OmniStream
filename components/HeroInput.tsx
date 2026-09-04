@@ -185,10 +185,10 @@ export function HeroInput() {
       : t("inputPlaceholderInstagram");
 
   return (
-    <section className="relative w-full pt-10 pb-10 px-4 sm:px-6">
+    <section className="relative w-full pt-8 sm:pt-10 pb-8 sm:pb-10 px-3 sm:px-6 overflow-hidden">
       {/* Background ambient radial gold/blue glow */}
       <div
-        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] blur-[130px] pointer-events-none rounded-full transition-all duration-700 ${
+        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-[600px] h-[260px] sm:h-[350px] blur-[100px] sm:blur-[130px] pointer-events-none rounded-full transition-all duration-700 ${
           platform === "linkedin"
             ? "bg-gradient-to-b from-blue-600/20 to-transparent"
             : "bg-gradient-to-b from-[#d4af37]/15 to-transparent"
@@ -197,10 +197,10 @@ export function HeroInput() {
 
       <div className="container mx-auto max-w-4xl text-center relative z-10">
         {/* Top Feature Badge */}
-        <div className="inline-flex items-center justify-center mb-5">
+        <div className="inline-flex items-center justify-center mb-4 sm:mb-5">
           <Badge
             variant="default"
-            className={`px-4 py-1.5 text-xs font-medium backdrop-blur-md shadow-lg transition-all duration-300 ${
+            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-xs font-medium backdrop-blur-md shadow-lg transition-all duration-300 ${
               platform === "linkedin"
                 ? "border-sky-500/30 bg-sky-500/10 text-sky-300 shadow-sky-500/15"
                 : "border-[#d4af37]/30 bg-[#d4af37]/10 text-[#d4af37] shadow-[#d4af37]/10"
@@ -216,7 +216,7 @@ export function HeroInput() {
         </div>
 
         {/* Hero Title */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight transition-all">
+        <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3 sm:mb-4 leading-tight transition-all break-words">
           {platform === "linkedin" ? (
             <>
               Download Public{" "}
@@ -235,26 +235,26 @@ export function HeroInput() {
         </h1>
 
         {/* Hero Subtitle */}
-        <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto mb-7 leading-relaxed">
+        <p className="text-xs sm:text-base text-neutral-300 max-w-2xl mx-auto mb-6 sm:mb-7 leading-relaxed">
           {platform === "linkedin" ? t("subtitleLinkedin") : t("subtitleInstagram")}
         </p>
 
         {/* Platform Toggle Tabs */}
-        <div className="mx-auto mb-6 inline-flex items-center rounded-2xl border border-white/10 bg-neutral-900/80 p-1.5 backdrop-blur-xl shadow-xl">
+        <div className="mx-auto mb-6 inline-flex max-w-full items-center rounded-2xl border border-white/10 bg-neutral-900/80 p-1 sm:p-1.5 backdrop-blur-xl shadow-xl overflow-hidden">
           <button
             type="button"
             onClick={() => {
               setPlatform("instagram");
               setResolveError(null);
             }}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
               platform === "instagram"
                 ? "gold-gradient-bg text-neutral-950 shadow-md shadow-[#d4af37]/20 font-bold"
                 : "text-neutral-400 hover:text-white hover:bg-white/5"
             }`}
           >
-            <InstagramIcon className="h-4 w-4" />
-            <span>{t("instagramTab")}</span>
+            <InstagramIcon className="h-4 w-4 shrink-0" />
+            <span className="truncate">{t("instagramTab")}</span>
           </button>
 
           <button
@@ -263,14 +263,14 @@ export function HeroInput() {
               setPlatform("linkedin");
               setResolveError(null);
             }}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
               platform === "linkedin"
                 ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-md shadow-blue-500/25 font-bold"
                 : "text-neutral-400 hover:text-white hover:bg-white/5"
             }`}
           >
-            <LinkedInIcon className="h-4 w-4" />
-            <span>{t("linkedinTab")}</span>
+            <LinkedInIcon className="h-4 w-4 shrink-0" />
+            <span className="truncate">{t("linkedinTab")}</span>
           </button>
         </div>
 
@@ -303,7 +303,7 @@ export function HeroInput() {
                 onFocus={() => setInputFocused(true)}
                 onBlur={() => setInputFocused(false)}
                 placeholder={placeholderText}
-                className="w-full h-12 pl-4 pr-16 bg-transparent text-sm sm:text-base text-white placeholder:text-neutral-500 focus:outline-none"
+                className="w-full h-11 sm:h-12 pl-3.5 sm:pl-4 pr-14 sm:pr-16 bg-transparent text-sm sm:text-base text-white placeholder:text-neutral-500 focus:outline-none"
               />
 
               {/* Action buttons inside input right side */}
@@ -321,10 +321,10 @@ export function HeroInput() {
                   <button
                     type="button"
                     onClick={handlePaste}
-                    className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-white/10 text-neutral-300 hover:text-[#d4af37] hover:bg-white/15 transition-all border border-white/10 cursor-pointer"
+                    className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg text-xs font-medium bg-white/10 text-neutral-300 hover:text-[#d4af37] hover:bg-white/15 transition-all border border-white/10 cursor-pointer"
                   >
                     <Clipboard className="h-3 w-3" />
-                    <span className="hidden xs:inline">{t("pasteButton")}</span>
+                    <span className="hidden sm:inline">{t("pasteButton")}</span>
                   </button>
                 )}
               </div>
@@ -334,7 +334,7 @@ export function HeroInput() {
             <Button
               type="submit"
               disabled={isResolving || !url.trim()}
-              className={`w-full sm:w-auto h-12 px-6 rounded-xl font-semibold hover:brightness-110 shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`w-full sm:w-auto h-11 sm:h-12 px-5 sm:px-6 rounded-xl font-semibold hover:brightness-110 shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all ${
                 platform === "linkedin"
                   ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-blue-500/20"
                   : "gold-gradient-bg text-neutral-950 shadow-[#d4af37]/20"

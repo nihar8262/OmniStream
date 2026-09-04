@@ -13,29 +13,29 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-neutral-950/75 backdrop-blur-xl transition-all">
-      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="container mx-auto flex h-14 sm:h-16 max-w-6xl items-center justify-between px-3 sm:px-6">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
+        <a href="#" className="flex items-center gap-2 sm:gap-2.5 group">
           <div
-            className={`relative flex h-10 w-10 items-center justify-center rounded-xl p-[1px] transition-all duration-300 group-hover:scale-105 ${
+            className={`relative flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl p-[1px] transition-all duration-300 group-hover:scale-105 ${
               isLinkedIn
                 ? "bg-gradient-to-br from-sky-400 via-blue-500 to-blue-700 shadow-lg shadow-blue-500/25"
                 : "bg-gradient-to-br from-[#d4af37] via-[#e8a33d] to-[#854d0e] shadow-lg shadow-[#d4af37]/20"
             }`}
           >
-            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-neutral-950">
-              <BrandIcon platform={platform} className="h-5 w-5" />
+            <div className="flex h-full w-full items-center justify-center rounded-[7px] sm:rounded-[11px] bg-neutral-950">
+              <BrandIcon platform={platform} className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
           </div>
           <div className="flex flex-col">
             <span
-              className={`text-lg font-bold tracking-tight transition-all duration-300 ${
+              className={`text-base sm:text-lg font-bold tracking-tight transition-all duration-300 ${
                 isLinkedIn ? "linkedin-gradient-text" : "gold-gradient-text"
               }`}
             >
               {t("title")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-neutral-400 font-medium -mt-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-400 font-medium -mt-0.5 sm:-mt-1">
               {t("tagline")}
             </span>
           </div>

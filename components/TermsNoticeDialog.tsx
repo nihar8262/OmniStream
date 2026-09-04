@@ -81,12 +81,12 @@ export function TermsNoticeDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="my-3 rounded-xl border border-white/10 bg-black/40 p-4">
-          <label className="flex items-start gap-3 cursor-pointer">
+        <div className="my-3 rounded-xl border border-white/10 bg-black/40 p-3 sm:p-4">
+          <label className="flex items-start gap-2.5 sm:gap-3 cursor-pointer">
             <Checkbox
               checked={checked}
               onCheckedChange={(val) => setChecked(Boolean(val))}
-              className="mt-0.5"
+              className="mt-0.5 shrink-0"
             />
             <span className="text-xs text-neutral-300 leading-relaxed select-none">
               {t("affirmation")}

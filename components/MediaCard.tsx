@@ -161,14 +161,15 @@ export function MediaCard({
             e.stopPropagation();
             onDownloadSingle(item);
           }}
-          className={`h-8 px-3 text-xs transition-colors cursor-pointer ${
+          aria-label={t("downloadSingle")}
+          className={`h-8 px-2.5 sm:px-3 text-xs shrink-0 transition-colors cursor-pointer ${
             isLinkedIn
               ? "border-sky-500/30 text-sky-400 hover:bg-sky-500 hover:text-neutral-950"
               : "border-[#d4af37]/30 text-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
           }`}
         >
           <Download className="h-3.5 w-3.5" />
-          <span className="hidden xs:inline">{t("downloadSingle")}</span>
+          <span className="hidden sm:inline">{t("downloadSingle")}</span>
         </Button>
       </div>
     </div>

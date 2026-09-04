@@ -113,15 +113,15 @@ export function MediaPreviewModal({
           {/* Modal Box */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className={`pointer-events-auto flex flex-col w-full max-w-5xl h-full max-h-[92vh] rounded-2xl border bg-neutral-950/95 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
+            className={`pointer-events-auto flex flex-col w-full max-w-5xl h-full max-h-[88dvh] sm:max-h-[92vh] rounded-2xl border bg-neutral-950/95 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
               isLinkedIn ? "border-sky-500/30" : "border-white/15"
             }`}
           >
             {/* Top Bar Header */}
-            <div className="flex h-14 shrink-0 items-center justify-between border-b border-white/10 bg-neutral-900/80 px-4 sm:px-6 backdrop-blur-md z-20">
-              <div className="flex items-center gap-3">
+            <div className="flex h-12 sm:h-14 shrink-0 items-center justify-between border-b border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md z-20 gap-2 min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 truncate">
                 <span
-                  className={`text-xs font-bold ${
+                  className={`text-xs font-bold shrink-0 ${
                     isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
                   }`}
                 >
@@ -133,7 +133,7 @@ export function MediaPreviewModal({
 
                 <Badge
                   variant={currentItem.type === "video" ? (isLinkedIn ? "default" : "gold") : "secondary"}
-                  className={`text-[11px] font-semibold ${
+                  className={`text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 shrink-0 ${
                     currentItem.type === "video" && isLinkedIn
                       ? "bg-sky-500 text-neutral-950 font-bold"
                       : ""
@@ -142,7 +142,7 @@ export function MediaPreviewModal({
                   {currentItem.type === "video" ? (
                     <>
                       <Video className="mr-1 h-3 w-3" />
-                      <span>Reel / Video</span>
+                      <span>{isLinkedIn ? "Video" : "Reel / Video"}</span>
                     </>
                   ) : (
                     <>
@@ -153,19 +153,19 @@ export function MediaPreviewModal({
                 </Badge>
 
                 {currentItem.width && currentItem.height && (
-                  <span className="hidden sm:inline-block rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 border border-white/10">
+                  <span className="hidden sm:inline-block rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 border border-white/10 shrink-0">
                     {currentItem.width} × {currentItem.height}
                   </span>
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 {/* Toggle selection in modal */}
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => toggleItem(currentItem.id)}
-                  className={`h-8 gap-1.5 px-3 text-xs transition-all cursor-pointer ${
+                  className={`h-7 sm:h-8 gap-1 px-2 sm:px-3 text-xs transition-all cursor-pointer ${
                     isSelected
                       ? isLinkedIn
                         ? "border-sky-400 bg-sky-500/20 text-sky-300"
@@ -174,7 +174,7 @@ export function MediaPreviewModal({
                   }`}
                 >
                   <div
-                    className={`flex h-4 w-4 items-center justify-center rounded border ${
+                    className={`flex h-3.5 w-3.5 sm:h-4 sm:w-4 items-center justify-center rounded border ${
                       isSelected
                         ? isLinkedIn
                           ? "border-sky-400 bg-sky-500 text-neutral-950"
@@ -182,9 +182,9 @@ export function MediaPreviewModal({
                         : "border-neutral-400"
                     }`}
                   >
-                    {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
+                    {isSelected && <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 stroke-[3]" />}
                   </div>
-                  <span className="hidden xs:inline">
+                  <span className="hidden sm:inline">
                     {isSelected ? t("selected") : t("select")}
                   </span>
                 </Button>
@@ -193,13 +193,13 @@ export function MediaPreviewModal({
                 <Button
                   size="sm"
                   onClick={() => onDownloadSingle(currentItem)}
-                  className={`h-8 gap-1.5 px-3 text-xs font-semibold cursor-pointer transition-all ${
+                  className={`h-7 sm:h-8 gap-1 px-2 sm:px-3 text-xs font-semibold cursor-pointer transition-all ${
                     isLinkedIn
                       ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-md shadow-blue-500/25"
                       : "gold-gradient-bg text-neutral-950"
                   }`}
                 >
-                  <Download className="h-3.5 w-3.5" />
+                  <Download className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   <span className="hidden sm:inline">{t("download")}</span>
                 </Button>
 
@@ -207,7 +207,7 @@ export function MediaPreviewModal({
                 <button
                   onClick={onClose}
                   aria-label={t("close")}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                  className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -215,20 +215,20 @@ export function MediaPreviewModal({
             </div>
 
             {/* Center Media Display Area (Responsive, Bounded, No Overflow) */}
-            <div className="relative flex flex-1 items-center justify-center min-h-0 w-full p-3 sm:p-6 bg-black/60 select-none overflow-hidden">
+            <div className="relative flex flex-1 items-center justify-center min-h-0 w-full p-2 sm:p-6 bg-black/60 select-none overflow-hidden">
               {/* Previous Button */}
               {items.length > 1 && (
                 <button
                   type="button"
                   onClick={handlePrev}
                   aria-label={t("prev")}
-                  className={`absolute left-2 sm:left-4 z-30 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
+                  className={`absolute left-1.5 sm:left-4 z-30 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
                     isLinkedIn
                       ? "hover:border-sky-400 hover:bg-sky-500 hover:text-neutral-950"
                       : "hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
                   }`}
                 >
-                  <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
                 </button>
               )}
 
@@ -252,7 +252,7 @@ export function MediaPreviewModal({
                     controls
                     autoPlay
                     playsInline
-                    className="max-h-[64vh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl"
+                    className="max-h-[60dvh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl"
                   />
                 ) : (
                   <img
@@ -263,7 +263,7 @@ export function MediaPreviewModal({
                       setImgError(true);
                       setImgLoaded(true);
                     }}
-                    className={`max-h-[64vh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl transition-opacity duration-300 ${
+                    className={`max-h-[60dvh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl transition-opacity duration-300 ${
                       imgLoaded ? "opacity-100" : "opacity-0"
                     }`}
                   />
@@ -276,20 +276,20 @@ export function MediaPreviewModal({
                   type="button"
                   onClick={handleNext}
                   aria-label={t("next")}
-                  className={`absolute right-2 sm:right-4 z-30 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
+                  className={`absolute right-1.5 sm:right-4 z-30 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
                     isLinkedIn
                       ? "hover:border-sky-400 hover:bg-sky-500 hover:text-neutral-950"
                       : "hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
                   }`}
                 >
-                  <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
                 </button>
               )}
             </div>
 
             {/* Bottom Bar Info */}
-            <div className="flex h-11 shrink-0 items-center justify-between border-t border-white/10 bg-neutral-900/80 px-4 sm:px-6 backdrop-blur-md z-20">
-              <span className="text-[11px] text-neutral-400 font-mono truncate max-w-[240px] sm:max-w-md">
+            <div className="flex h-9 sm:h-11 shrink-0 items-center justify-between border-t border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md z-20">
+              <span className="text-[10px] sm:text-[11px] text-neutral-400 font-mono truncate max-w-[200px] sm:max-w-md">
                 {currentItem.filename}
               </span>
               <span className="hidden sm:inline-block text-[11px] text-neutral-500">
