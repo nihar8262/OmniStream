@@ -32,6 +32,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const tokens: string[] = body?.tokens || [];
+    const pageSize = body?.pageSize || "fit";
+    const orientation = body?.orientation || "auto";
+    const prefix = body?.prefix || "omnistream_export";
 
     if (!Array.isArray(tokens) || tokens.length === 0) {
       return NextResponse.json(
@@ -78,9 +81,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const pdfBytes = await createPdfFromImages(imageEntries);
+    const pdfBytes = await createPdfFromImages(imageEntries, {
+      pageSize,
+      orientation,
+    });
     const dateStr = new Date().toISOString().slice(0, 10);
-    const pdfFilename = `instagram_photos_${dateStr}.pdf`;
+    const pdfFilename = `${prefix}_${dateStr}.pdf`;
 
     return new Response(Buffer.from(pdfBytes), {
       status: 200,

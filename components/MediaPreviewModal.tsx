@@ -14,7 +14,9 @@ import {
   X,
   Image as ImageIcon,
   Video,
+  Copy,
 } from "lucide-react";
+import { toast } from "sonner";
 
 interface MediaPreviewModalProps {
   items: ClientMediaItem[];
@@ -187,6 +189,30 @@ export function MediaPreviewModal({
                   <span className="hidden sm:inline">
                     {isSelected ? t("selected") : t("select")}
                   </span>
+                </Button>
+
+                {/* Copy direct link button */}
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={async () => {
+                    try {
+                      const origin = typeof window !== "undefined" ? window.location.origin : "";
+                      const directUrl = `${origin}/api/download?token=${encodeURIComponent(
+                        currentItem.mediaToken
+                      )}&filename=${encodeURIComponent(currentItem.filename)}`;
+                      await navigator.clipboard.writeText(directUrl);
+                      toast.success("Direct media link copied!");
+                    } catch {
+                      toast.error("Failed to copy link");
+                    }
+                  }}
+                  aria-label="Copy direct media link"
+                  title="Copy direct download link"
+                  className="h-7 sm:h-8 gap-1 px-2 sm:px-2.5 text-xs border-white/20 text-neutral-300 hover:border-white/40 hover:text-white cursor-pointer"
+                >
+                  <Copy className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <span className="hidden md:inline">Copy Link</span>
                 </Button>
 
                 {/* Download single button */}

@@ -43,6 +43,7 @@ interface AppState {
   toggleItem: (id: string) => void;
   selectAll: () => void;
   deselectAll: () => void;
+  selectBatch: (batchIndex: number, batchSize?: number) => void;
   termsAccepted: boolean;
   setTermsAccepted: (accepted: boolean) => void;
   isTermsModalOpen: boolean;
@@ -89,8 +90,16 @@ export const useAppStore = create<AppState>((set, get) => ({
   selectAll: () => {
     const { manifest } = get();
     if (!manifest) return;
-    // Cap at first 20 items
+    // Select first 20 items
     set({ selectedIds: manifest.items.slice(0, 20).map((i) => i.id) });
+  },
+  selectBatch: (batchIndex: number, batchSize = 20) => {
+    const { manifest } = get();
+    if (!manifest) return;
+    const start = batchIndex * batchSize;
+    const end = start + batchSize;
+    const batchItems = manifest.items.slice(start, end).map((i) => i.id);
+    set({ selectedIds: batchItems });
   },
   deselectAll: () => set({ selectedIds: [] }),
   termsAccepted: false,

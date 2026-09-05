@@ -42,7 +42,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         onValueChange={handleLocaleChange}
         disabled={isPending}
       >
-        <SelectTrigger className="h-8 sm:h-9 w-[105px] sm:w-[130px] border-white/10 bg-white/5 text-xs font-medium hover:border-[#d4af37]/40 focus:ring-[#d4af37] px-2 sm:px-3">
+        <SelectTrigger aria-label="Select Interface Language" className="h-8 sm:h-9 w-[105px] sm:w-[130px] border-white/10 bg-white/5 text-xs font-medium hover:border-[#d4af37]/40 focus:ring-[#d4af37] px-2 sm:px-3">
           <div className="flex items-center gap-1.5 truncate">
             <Globe className="h-3.5 w-3.5 shrink-0 text-[#d4af37]" />
             <span className="truncate">{currentLang.flag} {currentLang.label}</span>

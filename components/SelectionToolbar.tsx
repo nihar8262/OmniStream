@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { toast } from "sonner";
+import { PdfExportDialog } from "./PdfExportDialog";
 
 export function SelectionToolbar() {
   const t = useTranslations("toolbar");
@@ -34,6 +35,7 @@ export function SelectionToolbar() {
   const [activeBatchType, setActiveBatchType] = useState<"zip" | "pdf" | null>(
     null
   );
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
 
   const isLinkedIn = platform === "linkedin";
 
@@ -94,7 +96,7 @@ export function SelectionToolbar() {
     }
   };
 
-  const triggerPdfDownload = async () => {
+  const handleOpenPdfDialog = () => {
     if (!hasImages) {
       toast.error(t("pdfOnlyImagesTooltip"));
       return;
@@ -106,16 +108,31 @@ export function SelectionToolbar() {
       return;
     }
 
+    setIsPdfModalOpen(true);
+  };
+
+  const handleConfirmPdfExport = async (
+    tokens: string[],
+    options: {
+      pageSize: "a4" | "letter" | "fit";
+      orientation: "portrait" | "landscape" | "auto";
+    }
+  ) => {
     setIsProcessingBatch(true);
     setActiveBatchType("pdf");
     setBatchProgress(t("generatingPdf"));
 
     try {
-      const tokens = selectedImageItems.map((item) => item.mediaToken);
+      const prefix = isLinkedIn ? "linkedin_document" : "instagram_photos";
       const res = await fetch("/api/pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tokens }),
+        body: JSON.stringify({
+          tokens,
+          pageSize: options.pageSize,
+          orientation: options.orientation,
+          prefix,
+        }),
       });
 
       if (!res.ok) {
@@ -127,13 +144,13 @@ export function SelectionToolbar() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      const prefix = isLinkedIn ? "linkedin_document" : "instagram_photos";
       a.download = `${prefix}_${new Date().toISOString().slice(0, 10)}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
 
+      setIsPdfModalOpen(false);
       toast.success("PDF document downloaded successfully!");
     } catch (err: unknown) {
       console.error("PDF download failed:", err);
@@ -205,7 +222,7 @@ export function SelectionToolbar() {
           <Button
             size="sm"
             variant="secondary"
-            onClick={triggerPdfDownload}
+            onClick={handleOpenPdfDialog}
             disabled={isProcessingBatch || !hasImages}
             title={!hasImages ? t("pdfOnlyImagesTooltip") : undefined}
             className={`flex-1 sm:flex-initial min-w-0 h-10 sm:h-9 px-2.5 sm:px-4 text-xs font-medium border-white/10 bg-white/10 text-white hover:bg-white/15 cursor-pointer disabled:opacity-40 transition-colors ${
@@ -230,6 +247,15 @@ export function SelectionToolbar() {
           </Button>
         </div>
       </div>
+
+      {/* PDF Customization & Reorder Dialog */}
+      <PdfExportDialog
+        isOpen={isPdfModalOpen}
+        onClose={() => setIsPdfModalOpen(false)}
+        imageItems={selectedImageItems}
+        onConfirmExport={handleConfirmPdfExport}
+        isExporting={isProcessingBatch && activeBatchType === "pdf"}
+      />
     </div>
   );
 }

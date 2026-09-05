@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { ClientMediaItem, useAppStore } from "@/lib/store";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Image as ImageIcon, Video, Download, Check } from "lucide-react";
+import { Image as ImageIcon, Video, Download, Check, Link, Copy } from "lucide-react";
+import { toast } from "sonner";
 
 interface MediaCardProps {
   item: ClientMediaItem;
@@ -26,8 +27,25 @@ export function MediaCard({
   const isLinkedIn = platform === "linkedin";
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   const thumbUrl = `/api/thumbnail?token=${encodeURIComponent(item.thumbnailToken)}`;
+
+  const handleCopyDirectLink = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const origin = typeof window !== "undefined" ? window.location.origin : "";
+      const directUrl = `${origin}/api/download?token=${encodeURIComponent(
+        item.mediaToken
+      )}&filename=${encodeURIComponent(item.filename)}`;
+      await navigator.clipboard.writeText(directUrl);
+      setCopiedLink(true);
+      toast.success("Direct media download link copied!");
+      setTimeout(() => setCopiedLink(false), 2000);
+    } catch {
+      toast.error("Failed to copy link to clipboard");
+    }
+  };
 
   return (
     <div
@@ -140,23 +158,40 @@ export function MediaCard({
           </span>
         </div>
 
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={(e) => {
-            e.stopPropagation();
-            onDownloadSingle(item);
-          }}
-          aria-label={t("downloadSingle")}
-          className={`h-8 px-2.5 sm:px-3 text-xs shrink-0 transition-colors cursor-pointer ${
-            isLinkedIn
-              ? "border-sky-500/30 text-sky-400 hover:bg-sky-500 hover:text-neutral-950"
-              : "border-[#d4af37]/30 text-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
-          }`}
-        >
-          <Download className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">{t("downloadSingle")}</span>
-        </Button>
+        <div className="flex items-center gap-1.5 shrink-0">
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={handleCopyDirectLink}
+            aria-label="Copy direct media link"
+            title="Copy direct download link"
+            className="h-8 w-8 p-0 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            {copiedLink ? (
+              <Check className="h-3.5 w-3.5 text-emerald-400" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
+          </Button>
+
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDownloadSingle(item);
+            }}
+            aria-label={t("downloadSingle")}
+            className={`h-8 px-2.5 sm:px-3 text-xs shrink-0 transition-colors cursor-pointer ${
+              isLinkedIn
+                ? "border-sky-500/30 text-sky-400 hover:bg-sky-500 hover:text-neutral-950"
+                : "border-[#d4af37]/30 text-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
+            }`}
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">{t("downloadSingle")}</span>
+          </Button>
+        </div>
       </div>
     </div>
   );

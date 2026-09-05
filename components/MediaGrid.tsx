@@ -16,6 +16,7 @@ export function MediaGrid() {
     selectedIds,
     selectAll,
     deselectAll,
+    selectBatch,
     termsAccepted,
     setIsTermsModalOpen,
     setPendingAction,
@@ -28,6 +29,8 @@ export function MediaGrid() {
   if (!manifest || manifest.items.length === 0) {
     return null;
   }
+
+  const totalBatches = Math.ceil(manifest.items.length / 20);
 
   const allSelected =
     manifest.items.length > 0 &&
@@ -83,7 +86,6 @@ export function MediaGrid() {
                       alt={manifest.author.fullName || manifest.author.username}
                       className="h-full w-full object-cover"
                       onError={(e) => {
-                        // fallback to icon on error
                         e.currentTarget.style.display = "none";
                       }}
                     />
@@ -134,44 +136,84 @@ export function MediaGrid() {
           )}
         </div>
 
-        {/* Selection Toolbar Header */}
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/5 bg-neutral-900/40 px-3 sm:px-4 py-2.5 sm:py-3">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={allSelected ? deselectAll : selectAll}
-              className="h-8 text-xs font-medium cursor-pointer"
-            >
-              {allSelected ? (
-                <>
-                  <Square className="h-3.5 w-3.5 text-neutral-400" />
-                  <span>{t("deselectAll")}</span>
-                </>
-              ) : (
-                <>
-                  <CheckSquare
-                    className={`h-3.5 w-3.5 ${
-                      isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
-                    }`}
-                  />
-                  <span>{t("selectAll")}</span>
-                </>
-              )}
-            </Button>
+        {/* Selection Toolbar Header & Batch Quick-Selectors */}
+        <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-white/5 bg-neutral-900/40 p-3 sm:p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={allSelected ? deselectAll : selectAll}
+                className="h-8 text-xs font-medium cursor-pointer"
+              >
+                {allSelected ? (
+                  <>
+                    <Square className="h-3.5 w-3.5 text-neutral-400" />
+                    <span>{t("deselectAll")}</span>
+                  </>
+                ) : (
+                  <>
+                    <CheckSquare
+                      className={`h-3.5 w-3.5 ${
+                        isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
+                      }`}
+                    />
+                    <span>{t("selectAll")}</span>
+                  </>
+                )}
+              </Button>
 
-            <span className="text-xs text-neutral-400 font-medium">
-              {t("selectedCount", {
-                count: selectedIds.length,
-                total: manifest.itemCount,
-              })}
-            </span>
+              <span className="text-xs text-neutral-400 font-medium">
+                {t("selectedCount", {
+                  count: selectedIds.length,
+                  total: manifest.itemCount,
+                })}
+              </span>
+            </div>
+
+            {manifest.itemCount > 20 && (
+              <div className="flex items-center gap-1.5 text-[11px] text-amber-400/90 w-full sm:w-auto">
+                <Info className="h-3.5 w-3.5 shrink-0" />
+                <span>Showing all {manifest.itemCount} items (max 20 per ZIP/PDF batch)</span>
+              </div>
+            )}
           </div>
 
-          {manifest.itemCount > 20 && (
-            <div className="flex items-center gap-1.5 text-[11px] text-amber-400/90 w-full sm:w-auto">
-              <Info className="h-3.5 w-3.5 shrink-0" />
-              <span>{t("maxSelectionNotice")}</span>
+          {/* Batch Selector Buttons for Large Carousels (> 20 items) */}
+          {totalBatches > 1 && (
+            <div className="pt-2.5 border-t border-white/5 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-neutral-400 font-medium mr-1">
+                Select by batch:
+              </span>
+              {Array.from({ length: totalBatches }).map((_, batchIdx) => {
+                const startItem = batchIdx * 20 + 1;
+                const endItem = Math.min((batchIdx + 1) * 20, manifest.itemCount);
+                const batchIds = manifest.items
+                  .slice(batchIdx * 20, (batchIdx + 1) * 20)
+                  .map((i) => i.id);
+                const isBatchSelected =
+                  batchIds.length > 0 &&
+                  batchIds.every((id) => selectedIds.includes(id)) &&
+                  selectedIds.length === batchIds.length;
+
+                return (
+                  <Button
+                    key={batchIdx}
+                    size="sm"
+                    variant="outline"
+                    onClick={() => selectBatch(batchIdx, 20)}
+                    className={`h-7 px-2.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                      isBatchSelected
+                        ? isLinkedIn
+                          ? "bg-sky-500/20 border-sky-400 text-sky-300 font-bold"
+                          : "bg-[#d4af37]/20 border-[#d4af37] text-[#fef08a] font-bold"
+                        : "border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    Batch {batchIdx + 1} ({startItem}–{endItem})
+                  </Button>
+                );
+              })}
             </div>
           )}
         </div>

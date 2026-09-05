@@ -71,17 +71,27 @@ async function processImage(inputBuffer: Buffer): Promise<{
   return { jpegBuffer, width, height };
 }
 
+export interface PdfExportOptions {
+  pageSize?: "a4" | "letter" | "fit";
+  orientation?: "portrait" | "landscape" | "auto";
+}
+
 /**
- * Converts a list of image URLs into a single multi-page PDF document.
+ * Converts a list of image URLs into a single multi-page PDF document with custom page size and orientation.
  */
-export async function createPdfFromImages(items: PdfImageEntry[]): Promise<Uint8Array> {
+export async function createPdfFromImages(
+  items: PdfImageEntry[],
+  options: PdfExportOptions = {}
+): Promise<Uint8Array> {
   if (items.length === 0) {
     throw new Error("No images provided for PDF generation");
   }
 
+  const { pageSize = "fit", orientation = "auto" } = options;
+
   const pdfDoc = await PDFDocument.create();
-  pdfDoc.setTitle("Instagram Media Export");
-  pdfDoc.setCreator("Instagram Media Downloader");
+  pdfDoc.setTitle("OmniStream Media Export");
+  pdfDoc.setCreator("OmniStream Universal Media Downloader");
 
   let addedPages = 0;
 
@@ -92,19 +102,51 @@ export async function createPdfFromImages(items: PdfImageEntry[]): Promise<Uint8
 
       const embeddedImage = await pdfDoc.embedJpg(jpegBuffer);
 
-      // Define standard page bounds (max 1200 x 1200 or image dimensions with 72 dpi scaling)
-      // Scale large dimensions down so PDF isn't excessively huge in physical print dimensions
-      const maxDim = 842; // A4 height points
-      const scale = Math.min(1, maxDim / Math.max(width, height));
-      const pageWidth = width * scale;
-      const pageHeight = height * scale;
+      let pageWidth = width;
+      let pageHeight = height;
+      let drawX = 0;
+      let drawY = 0;
+      let drawWidth = width;
+      let drawHeight = height;
+
+      if (pageSize === "a4" || pageSize === "letter") {
+        const baseW = pageSize === "a4" ? 595.28 : 612.0;
+        const baseH = pageSize === "a4" ? 841.89 : 792.0;
+
+        const isLandscape =
+          orientation === "landscape" ||
+          (orientation === "auto" && width > height);
+
+        pageWidth = isLandscape ? baseH : baseW;
+        pageHeight = isLandscape ? baseW : baseH;
+
+        const margin = 18; // clean border margin
+        const availW = pageWidth - margin * 2;
+        const availH = pageHeight - margin * 2;
+        const scale = Math.min(availW / width, availH / height);
+
+        drawWidth = width * scale;
+        drawHeight = height * scale;
+        drawX = (pageWidth - drawWidth) / 2;
+        drawY = (pageHeight - drawHeight) / 2;
+      } else {
+        // "fit" to image dimensions with sensible max bound
+        const maxDim = 1200;
+        const scale = Math.min(1, maxDim / Math.max(width, height));
+        pageWidth = width * scale;
+        pageHeight = height * scale;
+        drawWidth = pageWidth;
+        drawHeight = pageHeight;
+        drawX = 0;
+        drawY = 0;
+      }
 
       const page = pdfDoc.addPage([pageWidth, pageHeight]);
       page.drawImage(embeddedImage, {
-        x: 0,
-        y: 0,
-        width: pageWidth,
-        height: pageHeight,
+        x: drawX,
+        y: drawY,
+        width: drawWidth,
+        height: drawHeight,
       });
 
       addedPages++;
