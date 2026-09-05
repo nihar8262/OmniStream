@@ -65,9 +65,9 @@
   },
   "howItWorks": {
     "title": "Comment ça marche",
-    "subtitle": "Téléchargez vos contenus Instagram préférés en 5 étapes simples.",
+    "subtitle": "Téléchargez vos contenus {platform} préférés en 5 étapes simples.",
     "step1Title": "Trouvez la Publication",
-    "step1Desc": "Ouvrez Instagram et accédez à la publication ou au reel public que vous souhaitez télécharger.",
+    "step1Desc": "Ouvrez {platform} et accédez à la publication, au reel ou au carrousel public que vous souhaitez télécharger.",
     "step2Title": "Copiez le Lien",
     "step2Desc": "Appuyez sur les trois points (...) ou sur l'icône de partage et sélectionnez 'Copier le lien'.",
     "step3Title": "Collez et Cherchez",
@@ -92,10 +92,10 @@
   "terms": {
     "title": "Conditions Générales",
     "subtitle": "Mentions Légales & Avertissement",
-    "p1": "Cet outil est exclusivement destiné au téléchargement de contenus Instagram publics et librement accessibles.",
+    "p1": "Cet outil est exclusivement destiné au téléchargement de contenus Instagram et LinkedIn publics et librement accessibles.",
     "p2": "Nous ne possédons, ne stockons ni ne revendiquons aucun droit d'auteur sur les contenus téléchargés. Tous les droits appartiennent à leurs créateurs respectifs.",
     "p3": "Les utilisateurs sont seuls responsables de l'utilisation qu'ils font des médias téléchargés. Cet outil ne confère aucune licence de redistribution.",
-    "trademark": "Instagram et le logo Instagram sont des marques déposées de Meta Platforms, Inc. Ce projet est indépendant et non affilié à Meta Platforms, Inc."
+    "trademark": "Instagram est une marque déposée de Meta Platforms, Inc. LinkedIn est une marque déposée de LinkedIn Corporation / Microsoft Corporation. Ce projet est indépendant et non affilié à Meta Platforms, Inc. ou LinkedIn Corporation."
   },
   "errors": {
     "UNSUPPORTED_URL": "Lien invalide. Veuillez coller un lien public Instagram (ex. instagram.com/p/...) ou LinkedIn (ex. linkedin.com/feed/update/...)",

@@ -65,9 +65,9 @@
   },
   "howItWorks": {
     "title": "How It Works",
-    "subtitle": "Get your favorite Instagram media in 5 effortless steps.",
+    "subtitle": "Get your favorite {platform} media in 5 effortless steps.",
     "step1Title": "Find the Post",
-    "step1Desc": "Open Instagram and navigate to the public post, reel, or carousel you wish to download.",
+    "step1Desc": "Open {platform} and navigate to the public post, reel, or carousel you wish to download.",
     "step2Title": "Copy the Link",
     "step2Desc": "Tap the three dots (...) or share icon on the post and select 'Copy Link'.",
     "step3Title": "Paste and Search",
@@ -92,10 +92,10 @@
   "terms": {
     "title": "Terms & Conditions",
     "subtitle": "Legal Notice & Disclaimer",
-    "p1": "This media downloader is a utility tool designed exclusively for public, freely accessible Instagram content.",
+    "p1": "This media downloader is a utility tool designed exclusively for public, freely accessible Instagram and LinkedIn content.",
     "p2": "We do not own, store, or claim any copyright or intellectual property rights over any photos, videos, or captions accessed through this tool. All rights, titles, and trademarks belong exclusively to their respective creators and copyright owners.",
     "p3": "Users are solely responsible for how they use downloaded media. This tool does not grant any license to redistribute, resell, or republish third-party content without explicit consent from the copyright holder.",
-    "trademark": "Instagram and the Instagram logo are registered trademarks of Meta Platforms, Inc. This application is an independent tool and is not affiliated with, sponsored, or endorsed by Meta Platforms, Inc. or Instagram."
+    "trademark": "Instagram is a registered trademark of Meta Platforms, Inc. LinkedIn is a registered trademark of LinkedIn Corporation / Microsoft Corporation. This application is an independent tool and is not affiliated with, sponsored, or endorsed by Meta Platforms, Inc. or LinkedIn Corporation."
   },
   "errors": {
     "UNSUPPORTED_URL": "Invalid post link. Please paste a public Instagram (e.g. instagram.com/p/...) or LinkedIn post link (e.g. linkedin.com/feed/update/...)",

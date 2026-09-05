@@ -65,9 +65,9 @@
   },
   "howItWorks": {
     "title": "Cómo Funciona",
-    "subtitle": "Obtén tu contenido favorito de Instagram en 5 sencillos pasos.",
+    "subtitle": "Obtén tu contenido favorito de {platform} en 5 sencillos pasos.",
     "step1Title": "Encuentra la Publicación",
-    "step1Desc": "Abre Instagram y ve a la publicación, reel o carrusel público que deseas descargar.",
+    "step1Desc": "Abre {platform} y ve a la publicación, reel o carrusel público que deseas descargar.",
     "step2Title": "Copia el Enlace",
     "step2Desc": "Toca los tres puntos (...) o el icono de compartir y selecciona 'Copiar enlace'.",
     "step3Title": "Pega y Busca",
@@ -92,10 +92,10 @@
   "terms": {
     "title": "Términos y Condiciones",
     "subtitle": "Aviso Legal y Descargo de Responsabilidad",
-    "p1": "Esta herramienta de descarga está diseñada exclusivamente para contenido público y de libre acceso en Instagram.",
+    "p1": "Esta herramienta de descarga está diseñada exclusivamente para contenido público y de libre acceso en Instagram y LinkedIn.",
     "p2": "No poseemos, almacenamos ni reclamamos derechos de autor sobre las fotos o videos descargados. Todos los derechos pertenecen a sus respectivos creadores.",
     "p3": "Los usuarios son los únicos responsables del uso que hagan del material descargado. Esta herramienta no otorga licencias para redistribuir contenido de terceros.",
-    "trademark": "Instagram y el logo de Instagram son marcas registradas de Meta Platforms, Inc. Este proyecto es una herramienta independiente no afiliada ni respaldada por Meta Platforms, Inc."
+    "trademark": "Instagram es una marca registrada de Meta Platforms, Inc. LinkedIn es una marca registrada de LinkedIn Corporation / Microsoft Corporation. Este proyecto es una herramienta independiente no afiliada ni respaldada por Meta Platforms, Inc. o LinkedIn Corporation."
   },
   "errors": {
     "UNSUPPORTED_URL": "Enlace no válido. Pega un enlace público de Instagram (ej. instagram.com/p/...) o LinkedIn (ej. linkedin.com/feed/update/...)",

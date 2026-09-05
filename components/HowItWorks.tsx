@@ -10,13 +10,14 @@ export function HowItWorks() {
   const t = useTranslations("howItWorks");
   const { platform } = useAppStore();
   const isLinkedIn = platform === "linkedin";
+  const platformName = isLinkedIn ? "LinkedIn" : "Instagram";
 
   const steps = [
     {
       num: "01",
       icon: Compass,
       title: t("step1Title"),
-      desc: t("step1Desc"),
+      desc: t("step1Desc", { platform: platformName }),
     },
     {
       num: "02",
@@ -52,7 +53,7 @@ export function HowItWorks() {
             {t("title")}
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto">
-            {t("subtitle")}
+            {t("subtitle", { platform: platformName })}
           </p>
         </div>
 

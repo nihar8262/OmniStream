@@ -65,9 +65,9 @@
   },
   "howItWorks": {
     "title": "操作步骤",
-    "subtitle": "只需 5 个简单步骤，即可轻松保存所需媒体内容。",
+    "subtitle": "只需 5 个简单步骤，即可轻松保存 {platform} 所需媒体内容。",
     "step1Title": "查找帖子",
-    "step1Desc": "打开 Instagram 或 LinkedIn，找到您想要下载的公开帖子、视频或轮播幻灯片。",
+    "step1Desc": "打开 {platform}，找到您想要下载的公开帖子、视频或轮播幻灯片。",
     "step2Title": "复制链接",
     "step2Desc": "点击帖子右上角的分享按钮或三点图标，选择“复制链接”。",
     "step3Title": "粘贴并解析",
