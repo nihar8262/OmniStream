@@ -20,10 +20,13 @@ import {
   Copy,
   History,
   Check,
+  FileText,
+  FileArchive,
+  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import { LinkHistoryModal } from "./LinkHistoryModal";
-import { saveLinkToHistory, getLinkHistory } from "@/lib/history";
+import { saveLinkToHistory, getLinkHistory, HistoryItem } from "@/lib/history";
 
 function InstagramIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -66,16 +69,24 @@ export function HeroInput() {
     setResolveError,
     setManifest,
     resetAll,
+    isHistoryModalOpen,
+    setIsHistoryModalOpen,
   } = useAppStore();
 
   const [inputFocused, setInputFocused] = useState(false);
-  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [historyCount, setHistoryCount] = useState(0);
+  const [recentList, setRecentList] = useState<HistoryItem[]>([]);
   const [copiedUrl, setCopiedUrl] = useState(false);
 
+  const refreshHistory = () => {
+    const list = getLinkHistory();
+    setRecentList(list.slice(0, 4));
+    setHistoryCount(list.length);
+  };
+
   useEffect(() => {
-    setHistoryCount(getLinkHistory().length);
-  }, []);
+    refreshHistory();
+  }, [isHistoryModalOpen]);
 
   const detectPlatformFromUrl = (inputUrl: string): SupportedPlatform | null => {
     if (inputUrl.includes("linkedin.com") || inputUrl.includes("lnkd.in")) {
@@ -318,23 +329,6 @@ export function HeroInput() {
               <span className="truncate">{t("linkedinTab")}</span>
             </button>
           </div>
-
-          {/* Dedicated Link History Button */}
-          <button
-            type="button"
-            onClick={() => setIsHistoryOpen(true)}
-            aria-label="Open Link History"
-            title="View recent link history"
-            className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-neutral-900/80 px-3 sm:px-4 py-2 text-xs font-semibold text-neutral-300 hover:text-white hover:border-white/25 hover:bg-white/10 backdrop-blur-xl transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#d4af37] focus-visible:outline-none"
-          >
-            <History className="h-3.5 w-3.5 text-[#d4af37]" />
-            <span>History</span>
-            {historyCount > 0 && (
-              <span className="rounded-full bg-[#d4af37]/20 border border-[#d4af37]/40 px-1.5 py-0.2 text-[10px] font-bold text-[#fef08a]">
-                {historyCount}
-              </span>
-            )}
-          </button>
         </div>
 
         {/* Main Input Glass Card */}
@@ -436,6 +430,128 @@ export function HeroInput() {
           </div>
         </form>
 
+        {/* Recent Links Tray */}
+        {recentList.length > 0 ? (
+          <div className="mt-3.5 mx-auto max-w-2xl flex flex-wrap items-center justify-between gap-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-xl text-xs">
+            <div className="flex items-center gap-1.5 text-neutral-400 font-medium shrink-0">
+              <History className="h-3.5 w-3.5 text-[#d4af37]" />
+              <span className="hidden sm:inline">Recent:</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 flex-wrap flex-1 min-w-0">
+              {recentList.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    setUrl(item.url);
+                    if (item.platform !== platform) {
+                      setPlatform(item.platform);
+                    }
+                    handleSearch(undefined, item.url);
+                  }}
+                  title={`Re-search: ${item.url}`}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-[11px] text-neutral-200 hover:text-white transition-all max-w-[160px] sm:max-w-[200px] truncate cursor-pointer"
+                >
+                  {item.platform === "linkedin" ? (
+                    <LinkedInIcon className="h-3 w-3 text-sky-400 shrink-0" />
+                  ) : (
+                    <InstagramIcon className="h-3 w-3 text-[#d4af37] shrink-0" />
+                  )}
+                  <span className="truncate">
+                    {item.customName || item.authorUsername || item.url.replace(/^https?:\/\/(www\.)?/, "").slice(0, 18)}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsHistoryModalOpen(true)}
+              className="text-[11px] font-semibold text-[#d4af37] hover:underline shrink-0 cursor-pointer ml-auto"
+            >
+              All ({historyCount}) →
+            </button>
+          </div>
+        ) : (
+          <div className="mt-3.5 mx-auto max-w-2xl flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] text-neutral-400">
+            <div className="flex items-center gap-1.5">
+              <History className="h-3.5 w-3.5 text-neutral-500" />
+              <span>Link history & PDF export will automatically record here as you search.</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsHistoryModalOpen(true)}
+              className="text-[11px] font-medium text-neutral-300 hover:text-white hover:underline cursor-pointer"
+            >
+              Open History
+            </button>
+          </div>
+        )}
+
+        {/* Feature Tools Quick Bar */}
+        <div className="mt-5 mx-auto max-w-2xl grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left">
+          <div
+            onClick={() => {
+              if (recentList.length > 0) {
+                setUrl(recentList[0].url);
+                handleSearch(undefined, recentList[0].url);
+              } else {
+                toast.info("Paste any post link above to preview slides and convert directly to PDF!");
+              }
+            }}
+            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#d4af37]/40 transition-all cursor-pointer backdrop-blur-md"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#d4af37]/10 text-[#d4af37]">
+                <FileText className="h-3.5 w-3.5" />
+              </div>
+              <span className="text-xs font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                PDF Converter
+              </span>
+            </div>
+            <p className="text-[11px] text-neutral-400 line-clamp-2">
+              Drag to reorder carousel slides & export to A4, Letter, or Fit-Image PDF.
+            </p>
+          </div>
+
+          <div
+            onClick={() => {
+              toast.info("Paste any public post URL to batch-download all images and videos in 1 ZIP archive.");
+            }}
+            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-sky-500/40 transition-all cursor-pointer backdrop-blur-md"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-500/10 text-sky-400">
+                <FileArchive className="h-3.5 w-3.5" />
+              </div>
+              <span className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">
+                ZIP Bundler
+              </span>
+            </div>
+            <p className="text-[11px] text-neutral-400 line-clamp-2">
+              Package up to 20 full-resolution assets into a single instant ZIP download.
+            </p>
+          </div>
+
+          <div
+            onClick={() => setIsHistoryModalOpen(true)}
+            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 transition-all cursor-pointer backdrop-blur-md"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-purple-500/10 text-purple-400">
+                <History className="h-3.5 w-3.5" />
+              </div>
+              <span className="text-xs font-bold text-white group-hover:text-purple-400 transition-colors">
+                Link History
+              </span>
+            </div>
+            <p className="text-[11px] text-neutral-400 line-clamp-2">
+              100% private local device storage. Label, re-search, and manage recent links.
+            </p>
+          </div>
+        </div>
+
         {/* Distinct Contextual Error Feedback Messages */}
         {resolveError && (
           <div
@@ -526,9 +642,9 @@ export function HeroInput() {
 
       {/* Link History Modal */}
       <LinkHistoryModal
-        isOpen={isHistoryOpen}
+        isOpen={isHistoryModalOpen}
         onClose={() => {
-          setIsHistoryOpen(false);
+          setIsHistoryModalOpen(false);
           setHistoryCount(getLinkHistory().length);
         }}
         onSelectUrl={handleSelectFromHistory}

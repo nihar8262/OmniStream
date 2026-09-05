@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ClientMediaItem, useAppStore } from "@/lib/store";
 import {
   Dialog,
@@ -51,6 +51,21 @@ export function PdfExportDialog({
   const [orientation, setOrientation] = useState<"auto" | "portrait" | "landscape">(
     "auto"
   );
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!modalRef.current) return;
+    const rect = modalRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
 
   useEffect(() => {
     setItems(imageItems);
@@ -90,8 +105,42 @@ export function PdfExportDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && !isExporting && onClose()}>
-      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15">
-        <DialogHeader className="space-y-1 pr-8 sm:pr-10">
+      <DialogContent
+        ref={modalRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="overflow-hidden max-w-2xl max-h-[90vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15"
+      >
+        {/* Flashlight background spotlight */}
+        {mousePos && (
+          <div
+            className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
+            style={{
+              background: isLinkedIn
+                ? `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.16), rgba(14, 165, 233, 0.04) 45%, transparent 75%)`
+                : `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.20), rgba(232, 163, 61, 0.05) 45%, transparent 75%)`,
+            }}
+          />
+        )}
+
+        {/* Dynamic flashlight glowing border */}
+        {mousePos && (
+          <div
+            className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
+            style={{
+              background: isLinkedIn
+                ? `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
+                : `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              padding: "1.5px",
+            }}
+          />
+        )}
+
+        <DialogHeader className="relative z-10 space-y-1 pr-8 sm:pr-10">
           <div className="flex items-center gap-2">
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-lg ${
@@ -112,7 +161,7 @@ export function PdfExportDialog({
         </DialogHeader>
 
         {/* Options Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 my-2">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 my-2">
           {/* Page Size Selection */}
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5">
@@ -175,7 +224,7 @@ export function PdfExportDialog({
         </div>
 
         {/* Reorderable Slides Grid */}
-        <div className="flex-1 overflow-y-auto pr-1 min-h-[200px] max-h-[340px] space-y-2">
+        <div className="relative z-10 flex-1 overflow-y-auto pr-1 min-h-[200px] max-h-[340px] space-y-2">
           <div className="flex items-center justify-between pb-1">
             <span className="text-xs font-medium text-neutral-400">
               {items.length} page(s) — Drag or use arrows to change order
@@ -240,7 +289,7 @@ export function PdfExportDialog({
           </div>
         </div>
 
-        <DialogFooter className="pt-3 border-t border-white/10 flex flex-row items-center justify-end gap-2">
+        <DialogFooter className="relative z-10 pt-3 border-t border-white/10 flex flex-row items-center justify-end gap-2">
           <Button
             type="button"
             variant="outline"

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback, useState, useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { useTranslations } from "next-intl";
 import { ClientMediaItem, useAppStore } from "@/lib/store";
@@ -38,6 +38,21 @@ export function MediaPreviewModal({
   const isLinkedIn = platform === "linkedin";
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!modalRef.current) return;
+    const rect = modalRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
 
   const isOpen =
     currentIndex !== null &&
@@ -114,13 +129,45 @@ export function MediaPreviewModal({
 
           {/* Modal Box */}
           <div
+            ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className={`pointer-events-auto flex flex-col w-full max-w-5xl h-full max-h-[88dvh] sm:max-h-[92vh] rounded-2xl border bg-neutral-950/95 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className={`pointer-events-auto relative flex flex-col w-full max-w-5xl h-full max-h-[88dvh] sm:max-h-[92vh] rounded-2xl border bg-neutral-950/95 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
               isLinkedIn ? "border-sky-500/30" : "border-white/15"
             }`}
           >
+            {/* Flashlight background spotlight */}
+            {mousePos && (
+              <div
+                className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
+                style={{
+                  background: isLinkedIn
+                    ? `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.18), rgba(14, 165, 233, 0.04) 40%, transparent 75%)`
+                    : `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.22), rgba(232, 163, 61, 0.05) 40%, transparent 75%)`,
+                }}
+              />
+            )}
+
+            {/* Dynamic flashlight glowing border */}
+            {mousePos && (
+              <div
+                className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
+                style={{
+                  background: isLinkedIn
+                    ? `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
+                    : `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
+                  WebkitMask:
+                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                  padding: "1.5px",
+                }}
+              />
+            )}
+
             {/* Top Bar Header */}
-            <div className="flex h-12 sm:h-14 shrink-0 items-center justify-between border-b border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md z-20 gap-2 min-w-0">
+            <div className="relative z-20 flex h-12 sm:h-14 shrink-0 items-center justify-between border-b border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md gap-2 min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 truncate">
                 <span
                   className={`text-xs font-bold shrink-0 ${
@@ -240,8 +287,8 @@ export function MediaPreviewModal({
               </div>
             </div>
 
-            {/* Center Media Display Area (Responsive, Bounded, No Overflow) */}
-            <div className="relative flex flex-1 items-center justify-center min-h-0 w-full p-2 sm:p-6 bg-black/60 select-none overflow-hidden">
+            {/* Center Media Display Area (No flashlight light inside media section, 100% pure contrast) */}
+            <div className="relative z-10 isolate flex flex-1 items-center justify-center min-h-0 w-full p-2 sm:p-6 bg-black select-none overflow-hidden">
               {/* Previous Button */}
               {items.length > 1 && (
                 <button

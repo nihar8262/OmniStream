@@ -48,6 +48,8 @@ interface AppState {
   setTermsAccepted: (accepted: boolean) => void;
   isTermsModalOpen: boolean;
   setIsTermsModalOpen: (open: boolean) => void;
+  isHistoryModalOpen: boolean;
+  setIsHistoryModalOpen: (open: boolean) => void;
   pendingAction: { action: DownloadAction; token?: string; filename?: string } | null;
   setPendingAction: (action: { action: DownloadAction; token?: string; filename?: string } | null) => void;
   isProcessingBatch: boolean;
@@ -106,6 +108,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   setTermsAccepted: (termsAccepted) => set({ termsAccepted }),
   isTermsModalOpen: false,
   setIsTermsModalOpen: (isTermsModalOpen) => set({ isTermsModalOpen }),
+  isHistoryModalOpen: false,
+  setIsHistoryModalOpen: (isHistoryModalOpen) => set({ isHistoryModalOpen }),
   pendingAction: null,
   setPendingAction: (pendingAction) => set({ pendingAction }),
   isProcessingBatch: false,

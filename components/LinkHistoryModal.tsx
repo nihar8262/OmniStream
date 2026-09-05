@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   HistoryItem,
   getLinkHistory,
@@ -80,6 +80,21 @@ export function LinkHistoryModal({
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editNameText, setEditNameText] = useState("");
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!modalRef.current) return;
+    const rect = modalRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
 
   const refreshHistory = () => {
     setHistoryList(getLinkHistory());
@@ -159,8 +174,42 @@ export function LinkHistoryModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-2xl max-h-[88vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15">
-        <DialogHeader className="space-y-1.5 pr-8 sm:pr-10">
+      <DialogContent
+        ref={modalRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="max-w-2xl max-h-[88vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15 overflow-hidden group"
+      >
+        {/* Flashlight background spotlight */}
+        {mousePos && (
+          <div
+            className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
+            style={{
+              background: isLinkedIn
+                ? `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.16), rgba(14, 165, 233, 0.03) 45%, transparent 75%)`
+                : `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.20), rgba(232, 163, 61, 0.05) 45%, transparent 75%)`,
+            }}
+          />
+        )}
+
+        {/* Dynamic flashlight glowing border */}
+        {mousePos && (
+          <div
+            className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
+            style={{
+              background: isLinkedIn
+                ? `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
+                : `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              padding: "1.5px",
+            }}
+          />
+        )}
+
+        <DialogHeader className="relative z-10 space-y-1.5 pr-8 sm:pr-10">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
               <div
@@ -193,7 +242,7 @@ export function LinkHistoryModal({
 
         {/* Action controls header (Select All, Delete Selected, Clear All) */}
         {historyList.length > 0 && (
-          <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-xs">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs backdrop-blur-md">
             <div className="flex items-center gap-2">
               <Button
                 size="sm"
@@ -247,7 +296,7 @@ export function LinkHistoryModal({
         )}
 
         {/* History List Container */}
-        <div className="flex-1 overflow-y-auto min-h-[220px] max-h-[380px] space-y-2 pr-1">
+        <div className="relative z-10 flex-1 overflow-y-auto min-h-[220px] max-h-[380px] space-y-2 pr-1">
           {historyList.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-52 text-center p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-neutral-400 mb-3">
@@ -275,12 +324,14 @@ export function LinkHistoryModal({
                       onClose();
                     }
                   }}
-                  className={`group relative flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer ${
+                  className={`group relative flex items-start gap-3 p-3 rounded-xl border transition-all duration-200 cursor-pointer backdrop-blur-sm ${
                     isSelected
                       ? isItemLinkedIn
-                        ? "bg-sky-950/30 border-sky-500/50 shadow-md shadow-sky-500/10"
-                        : "bg-[#d4af37]/10 border-[#d4af37]/50 shadow-md shadow-[#d4af37]/10"
-                      : "bg-white/[0.02] border-white/10 hover:border-white/25 hover:bg-white/[0.05]"
+                        ? "bg-sky-950/40 border-sky-400/80 shadow-lg shadow-sky-500/15 ring-1 ring-sky-400/50"
+                        : "bg-[#d4af37]/15 border-[#d4af37]/80 shadow-lg shadow-[#d4af37]/15 ring-1 ring-[#d4af37]/50"
+                      : isItemLinkedIn
+                      ? "bg-white/[0.02] border-white/10 hover:border-sky-400/70 hover:bg-sky-950/20 hover:shadow-lg hover:shadow-sky-500/10"
+                      : "bg-white/[0.02] border-white/10 hover:border-[#d4af37]/70 hover:bg-[#d4af37]/10 hover:shadow-lg hover:shadow-[#d4af37]/10"
                   }`}
                 >
                   {/* Selection Checkbox */}

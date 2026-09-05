@@ -5,10 +5,11 @@ import { useTranslations } from "next-intl";
 import { useAppStore } from "@/lib/store";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { BrandIcon } from "./icons/BrandIcon";
+import { History } from "lucide-react";
 
 export function Header() {
   const t = useTranslations("nav");
-  const { platform } = useAppStore();
+  const { platform, setIsHistoryModalOpen } = useAppStore();
   const isLinkedIn = platform === "linkedin";
 
   return (
@@ -42,8 +43,18 @@ export function Header() {
         </a>
 
         {/* Navigation Links & Language Switcher */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-300">
+            <button
+              type="button"
+              onClick={() => setIsHistoryModalOpen(true)}
+              className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
+                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#d4af37]"
+              }`}
+            >
+              <History className="h-3.5 w-3.5" />
+              <span>History</span>
+            </button>
             <a
               href="#how-it-works"
               className={`transition-colors ${
@@ -69,6 +80,17 @@ export function Header() {
               {t("terms")}
             </a>
           </nav>
+
+          {/* Mobile History Button */}
+          <button
+            type="button"
+            onClick={() => setIsHistoryModalOpen(true)}
+            aria-label="Recent Links History"
+            className="flex md:hidden items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <History className="h-3.5 w-3.5 text-[#d4af37]" />
+            <span>History</span>
+          </button>
 
           <LanguageSwitcher />
         </div>
