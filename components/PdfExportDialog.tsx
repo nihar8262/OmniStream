@@ -91,7 +91,7 @@ export function PdfExportDialog({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && !isExporting && onClose()}>
       <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15">
-        <DialogHeader className="space-y-1">
+        <DialogHeader className="space-y-1 pr-8 sm:pr-10">
           <div className="flex items-center gap-2">
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-lg ${

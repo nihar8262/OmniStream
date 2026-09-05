@@ -160,11 +160,11 @@ export function LinkHistoryModal({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-2xl max-h-[88vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15">
-        <DialogHeader className="space-y-1">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+        <DialogHeader className="space-y-1.5 pr-8 sm:pr-10">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2 min-w-0">
               <div
-                className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
                   isLinkedIn
                     ? "bg-sky-500/20 text-sky-400 border border-sky-500/30"
                     : "bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30"
@@ -172,7 +172,7 @@ export function LinkHistoryModal({
               >
                 <History className="h-4 w-4" />
               </div>
-              <DialogTitle className="text-base sm:text-lg font-bold">
+              <DialogTitle className="text-base sm:text-lg font-bold truncate">
                 Recent Links History
               </DialogTitle>
             </div>
@@ -180,9 +180,9 @@ export function LinkHistoryModal({
             {historyList.length > 0 && (
               <Badge
                 variant="outline"
-                className="text-[11px] text-neutral-400 border-white/10 hidden sm:inline-flex"
+                className="text-[10px] sm:text-[11px] text-neutral-400 border-white/10 hidden sm:inline-flex"
               >
-                Stored locally on your device
+                Stored locally on device
               </Badge>
             )}
           </div>
