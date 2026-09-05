@@ -514,8 +514,8 @@ export function HeroInput() {
                 )}
 
                 {resolveError.code === "RESOLVER_FAILED" && (
-                  <div className="mt-2.5 pt-2 border-t border-red-500/20 text-[11px] text-neutral-300">
-                    💡 <span className="font-semibold text-amber-300">Tip:</span> Instagram actively blocks unauthenticated datacenter requests. To resolve any post in production or locally, simply add an <code className="bg-black/50 px-1.5 py-0.5 rounded text-[#d4af37]">INSTAGRAM_SESSION_ID</code> or <code className="bg-black/50 px-1.5 py-0.5 rounded text-[#d4af37]">RAPIDAPI_KEY</code> to your <code className="bg-black/50 px-1.5 py-0.5 rounded text-white">.env.local</code> file.
+                  <div className="mt-2.5 pt-2 border-t border-red-500/20 text-[11px] text-red-300/90">
+                    Please ensure the link is from a public post, or try refreshing the page.
                   </div>
                 )}
               </div>
