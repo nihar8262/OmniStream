@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { ClientMediaItem, useAppStore } from "@/lib/store";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Image as ImageIcon, Video, Download, Check, Maximize2 } from "lucide-react";
+import { Image as ImageIcon, Video, Download, Check } from "lucide-react";
 
 interface MediaCardProps {
   item: ClientMediaItem;
@@ -123,20 +123,6 @@ export function MediaCard({
           >
             {isSelected && <Check className="h-4 w-4 stroke-[3]" />}
           </button>
-        </div>
-
-        {/* Center Hover Magnify Icon */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div
-            className={`flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1.5 text-xs font-medium backdrop-blur-md shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform ${
-              isLinkedIn
-                ? "text-sky-300 border border-sky-500/40"
-                : "text-[#d4af37] border border-[#d4af37]/40"
-            }`}
-          >
-            <Maximize2 className="h-3.5 w-3.5" />
-            <span>{t("clickToPreview")}</span>
-          </div>
         </div>
       </div>
 
