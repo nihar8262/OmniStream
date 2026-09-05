@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { SelectionToolbar } from "@/components/SelectionToolbar";
 import { TermsNoticeDialog } from "@/components/TermsNoticeDialog";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -77,6 +78,7 @@ export default async function LocaleLayout({
               },
             }}
           />
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
