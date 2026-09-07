@@ -26,13 +26,9 @@ import {
   Edit2,
   Check,
   X,
-  ExternalLink,
-  Search,
   CheckSquare,
   Square,
   Clock,
-  ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -178,7 +174,7 @@ export function LinkHistoryModal({
         ref={modalRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="max-w-2xl max-h-[88vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15 overflow-hidden group"
+        className="max-w-2xl max-h-[88vh] flex flex-col p-4 sm:p-6 bg-[#101010]/98 border-white/[0.1] overflow-hidden group"
       >
         {/* Flashlight background spotlight */}
         {mousePos && (
@@ -186,25 +182,8 @@ export function LinkHistoryModal({
             className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
             style={{
               background: isLinkedIn
-                ? `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.16), rgba(14, 165, 233, 0.03) 45%, transparent 75%)`
-                : `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.20), rgba(232, 163, 61, 0.05) 45%, transparent 75%)`,
-            }}
-          />
-        )}
-
-        {/* Dynamic flashlight glowing border */}
-        {mousePos && (
-          <div
-            className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
-            style={{
-              background: isLinkedIn
-                ? `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
-                : `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
-              WebkitMask:
-                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-              padding: "1.5px",
+                ? `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.1), transparent 70%)`
+                : `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(231, 185, 47, 0.1), transparent 70%)`,
             }}
           />
         )}
@@ -215,13 +194,13 @@ export function LinkHistoryModal({
               <div
                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
                   isLinkedIn
-                    ? "bg-sky-500/20 text-sky-400 border border-sky-500/30"
-                    : "bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30"
+                    ? "bg-sky-500/15 text-sky-400 border border-sky-500/25"
+                    : "bg-[#e7b92f]/15 text-[#e7b92f] border border-[#e7b92f]/25"
                 }`}
               >
                 <History className="h-4 w-4" />
               </div>
-              <DialogTitle className="text-base sm:text-lg font-bold truncate">
+              <DialogTitle className="text-base sm:text-lg font-bold truncate text-[#f5f3ed]">
                 Recent Links History
               </DialogTitle>
             </div>
@@ -229,42 +208,42 @@ export function LinkHistoryModal({
             {historyList.length > 0 && (
               <Badge
                 variant="outline"
-                className="text-[10px] sm:text-[11px] text-neutral-400 border-white/10 hidden sm:inline-flex"
+                className="text-[10px] sm:text-[11px] text-[#a5a39c] border-white/[0.08] hidden sm:inline-flex"
               >
                 Stored locally on device
               </Badge>
             )}
           </div>
-          <DialogDescription className="text-xs text-neutral-400">
+          <DialogDescription className="text-xs text-[#a5a39c]">
             Access, label, or re-search your recently analyzed links.
           </DialogDescription>
         </DialogHeader>
 
-        {/* Action controls header (Select All, Delete Selected, Clear All) */}
+        {/* Action controls header */}
         {historyList.length > 0 && (
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs backdrop-blur-md">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs backdrop-blur-md">
             <div className="flex items-center gap-2">
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={toggleSelectAll}
-                className="h-7 px-2 text-xs text-neutral-300 hover:text-white cursor-pointer"
+                className="h-7 px-2 text-xs text-[#a5a39c] hover:text-[#f5f3ed] cursor-pointer"
               >
                 {selectedIds.length === historyList.length && historyList.length > 0 ? (
                   <>
-                    <Square className="h-3.5 w-3.5 mr-1 text-neutral-400" />
+                    <Square className="h-3.5 w-3.5 mr-1 text-[#a5a39c]" />
                     <span>Deselect All</span>
                   </>
                 ) : (
                   <>
-                    <CheckSquare className="h-3.5 w-3.5 mr-1 text-[#d4af37]" />
+                    <CheckSquare className="h-3.5 w-3.5 mr-1 text-[#e7b92f]" />
                     <span>Select All</span>
                   </>
                 )}
               </Button>
 
               {selectedIds.length > 0 && (
-                <span className="text-neutral-400 font-medium">
+                <span className="text-[#a5a39c] font-medium">
                   ({selectedIds.length} selected)
                 </span>
               )}
@@ -276,7 +255,7 @@ export function LinkHistoryModal({
                   size="sm"
                   variant="destructive"
                   onClick={handleDeleteSelected}
-                  className="h-7 px-2.5 text-xs font-semibold cursor-pointer bg-red-900/80 hover:bg-red-800 text-red-100"
+                  className="h-7 px-2.5 text-xs font-semibold cursor-pointer"
                 >
                   <Trash2 className="h-3 w-3 mr-1" />
                   <span>Delete Selected ({selectedIds.length})</span>
@@ -287,7 +266,7 @@ export function LinkHistoryModal({
                 size="sm"
                 variant="ghost"
                 onClick={handleClearAll}
-                className="h-7 px-2 text-xs text-neutral-400 hover:text-red-400 hover:bg-red-950/30 cursor-pointer"
+                className="h-7 px-2 text-xs text-[#a5a39c] hover:text-red-400 hover:bg-red-950/20 cursor-pointer"
               >
                 <span>Clear All</span>
               </Button>
@@ -298,14 +277,14 @@ export function LinkHistoryModal({
         {/* History List Container */}
         <div className="relative z-10 flex-1 overflow-y-auto min-h-[220px] max-h-[380px] space-y-2 pr-1">
           {historyList.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-52 text-center p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-neutral-400 mb-3">
+            <div className="flex flex-col items-center justify-center h-52 text-center p-6 rounded-2xl border border-white/[0.06] bg-white/[0.01]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] text-[#6f6d66] mb-3">
                 <Clock className="h-6 w-6 opacity-60" />
               </div>
-              <p className="text-sm font-semibold text-neutral-300">
+              <p className="text-sm font-semibold text-[#f5f3ed]">
                 No recent links found
               </p>
-              <p className="text-xs text-neutral-500 max-w-sm mt-1">
+              <p className="text-xs text-[#6f6d66] max-w-sm mt-1">
                 Any public post links you search will appear here for fast one-click re-access and custom labeling.
               </p>
             </div>
@@ -327,11 +306,11 @@ export function LinkHistoryModal({
                   className={`group relative flex items-start gap-3 p-3 rounded-xl border transition-all duration-200 cursor-pointer backdrop-blur-sm ${
                     isSelected
                       ? isItemLinkedIn
-                        ? "bg-sky-950/40 border-sky-400/80 shadow-lg shadow-sky-500/15 ring-1 ring-sky-400/50"
-                        : "bg-[#d4af37]/15 border-[#d4af37]/80 shadow-lg shadow-[#d4af37]/15 ring-1 ring-[#d4af37]/50"
+                        ? "bg-[#0c1624] border-sky-400/80 shadow-md ring-1 ring-sky-400/40"
+                        : "bg-[#14120a] border-[#e7b92f]/80 shadow-md ring-1 ring-[#e7b92f]/40"
                       : isItemLinkedIn
-                      ? "bg-white/[0.02] border-white/10 hover:border-sky-400/70 hover:bg-sky-950/20 hover:shadow-lg hover:shadow-sky-500/10"
-                      : "bg-white/[0.02] border-white/10 hover:border-[#d4af37]/70 hover:bg-[#d4af37]/10 hover:shadow-lg hover:shadow-[#d4af37]/10"
+                      ? "bg-white/[0.02] border-white/[0.08] hover:border-sky-400/50 hover:bg-[#0c1624]/60"
+                      : "bg-white/[0.02] border-white/[0.08] hover:border-[#e7b92f]/50 hover:bg-[#14120a]/60"
                   }`}
                 >
                   {/* Selection Checkbox */}
@@ -339,23 +318,23 @@ export function LinkHistoryModal({
                     type="button"
                     onClick={(e) => toggleSelect(item.id, e)}
                     aria-label={isSelected ? "Deselect" : "Select"}
-                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-all cursor-pointer ${
+                    className={`mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-all cursor-pointer ${
                       isSelected
                         ? isItemLinkedIn
                           ? "border-sky-400 bg-sky-500 text-neutral-950"
-                          : "border-[#d4af37] bg-[#d4af37] text-neutral-950 font-bold"
+                          : "border-[#e7b92f] bg-[#e7b92f] text-[#080808] font-bold"
                         : "border-white/20 bg-black/40 hover:border-white/50"
                     }`}
                   >
-                    {isSelected && <Check className="h-3.5 w-3.5 stroke-[3]" />}
+                    {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
                   </button>
 
                   {/* Icon Platform */}
                   <div
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg mt-0.5 ${
                       isItemLinkedIn
-                        ? "bg-sky-500/20 text-sky-400 border border-sky-500/30"
-                        : "bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30"
+                        ? "bg-sky-500/15 text-sky-400 border border-sky-500/25"
+                        : "bg-[#e7b92f]/15 text-[#e7b92f] border border-[#e7b92f]/25"
                     }`}
                   >
                     {isItemLinkedIn ? (
@@ -381,13 +360,13 @@ export function LinkHistoryModal({
                             if (e.key === "Escape") setEditingId(null);
                           }}
                           autoFocus
-                          placeholder="Give this link a short name (e.g. Design carousel)"
-                          className="flex-1 h-7 px-2 text-xs rounded-md bg-black border border-white/20 text-white focus:outline-none focus:border-[#d4af37]"
+                          placeholder="Give this link a short name"
+                          className="flex-1 h-7 px-2 text-xs rounded-md bg-black border border-white/20 text-[#f5f3ed] focus:outline-none focus:border-[#e7b92f]"
                         />
                         <button
                           type="button"
                           onClick={() => handleSaveEdit(item.id)}
-                          className="p-1 rounded bg-[#d4af37] text-black hover:bg-[#e8a33d]"
+                          className="p-1 rounded bg-[#e7b92f] text-[#080808] hover:bg-[#f0c94b]"
                           title="Save label"
                         >
                           <Check className="h-3.5 w-3.5 stroke-[3]" />
@@ -395,7 +374,7 @@ export function LinkHistoryModal({
                         <button
                           type="button"
                           onClick={() => setEditingId(null)}
-                          className="p-1 rounded bg-white/10 text-neutral-300 hover:bg-white/20"
+                          className="p-1 rounded bg-white/10 text-[#a5a39c] hover:bg-white/20"
                           title="Cancel"
                         >
                           <X className="h-3.5 w-3.5" />
@@ -403,7 +382,7 @@ export function LinkHistoryModal({
                       </div>
                     ) : (
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-xs font-bold text-white truncate">
+                        <span className="text-xs font-bold text-[#f5f3ed] truncate">
                           {item.customName ||
                             (item.authorUsername
                               ? `@${item.authorUsername}`
@@ -413,7 +392,7 @@ export function LinkHistoryModal({
                         </span>
 
                         {item.customName && item.authorUsername && (
-                          <span className="text-[11px] text-neutral-400 truncate">
+                          <span className="text-[11px] text-[#a5a39c] truncate">
                             (@{item.authorUsername})
                           </span>
                         )}
@@ -426,7 +405,7 @@ export function LinkHistoryModal({
                           }}
                           aria-label="Rename link"
                           title="Add / edit custom label"
-                          className="p-1 rounded text-neutral-400 hover:text-white hover:bg-white/10 opacity-70 group-hover:opacity-100 transition-all cursor-pointer"
+                          className="p-1 rounded text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/10 opacity-70 group-hover:opacity-100 transition-all cursor-pointer"
                         >
                           <Edit2 className="h-3 w-3" />
                         </button>
@@ -434,12 +413,12 @@ export function LinkHistoryModal({
                     )}
 
                     {/* URL text */}
-                    <p className="text-[11px] text-neutral-400 truncate font-mono">
+                    <p className="text-[11px] text-[#a5a39c] truncate font-mono">
                       {item.url}
                     </p>
 
                     {/* Timestamp & metadata */}
-                    <div className="flex items-center gap-3 mt-1 text-[10px] text-neutral-500">
+                    <div className="flex items-center gap-3 mt-1 text-[10px] text-[#6f6d66]">
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         <span>{formatTimestamp(item.firstUsedAt)}</span>
@@ -451,14 +430,14 @@ export function LinkHistoryModal({
                     </div>
                   </div>
 
-                  {/* Actions right side: Load & Delete */}
+                  {/* Actions right side */}
                   <div className="flex items-center gap-1 shrink-0">
                     <button
                       type="button"
                       onClick={(e) => handleDeleteSingle(item.id, e)}
                       aria-label="Delete link"
                       title="Remove from history"
-                      className="p-1.5 rounded-lg text-neutral-500 hover:text-red-400 hover:bg-red-950/40 opacity-70 group-hover:opacity-100 transition-all cursor-pointer"
+                      className="p-1.5 rounded-lg text-[#6f6d66] hover:text-red-400 hover:bg-red-950/30 opacity-70 group-hover:opacity-100 transition-all cursor-pointer"
                     >
                       <X className="h-3.5 w-3.5" />
                     </button>
@@ -469,13 +448,13 @@ export function LinkHistoryModal({
           )}
         </div>
 
-        <DialogFooter className="pt-2 border-t border-white/10 flex flex-row items-center justify-end">
+        <DialogFooter className="pt-2 border-t border-white/[0.08] flex flex-row items-center justify-end">
           <Button
             type="button"
             variant="outline"
             size="sm"
             onClick={onClose}
-            className="border-white/15 text-neutral-300 hover:bg-white/10 cursor-pointer"
+            className="border-white/[0.1] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.06] cursor-pointer"
           >
             Close
           </Button>

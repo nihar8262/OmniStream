@@ -108,7 +108,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-neutral-100 min-h-screen flex flex-col selection:bg-[#d4af37]/30 selection:text-[#fef08a]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#080808] text-[#f5f3ed] min-h-screen flex flex-col selection:bg-[#e7b92f]/25 selection:text-[#fef3c7]`}
       >
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />
@@ -121,9 +121,9 @@ export default async function LocaleLayout({
             position="bottom-right"
             toastOptions={{
               style: {
-                background: "#121214",
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                color: "#f4f4f5",
+                background: "#121212",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                color: "#f5f3ed",
               },
             }}
           />

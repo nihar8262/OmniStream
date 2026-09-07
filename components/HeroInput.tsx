@@ -11,7 +11,6 @@ import {
   X,
   Loader2,
   Sparkles,
-  AlertCircle,
   Link2Off,
   Lock,
   SearchX,
@@ -22,7 +21,6 @@ import {
   Check,
   FileText,
   FileArchive,
-  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import { LinkHistoryModal } from "./LinkHistoryModal";
@@ -236,38 +234,37 @@ export function HeroInput() {
       : t("inputPlaceholderInstagram");
 
   return (
-    <section className="relative w-full pt-8 sm:pt-10 pb-8 sm:pb-10 px-3 sm:px-6 overflow-hidden">
+    <section className="relative w-full pt-8 sm:pt-12 pb-10 sm:pb-14 px-4 sm:px-6 overflow-hidden">
       {/* Background ambient radial glow */}
       <div
-        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-[600px] h-[260px] sm:h-[350px] blur-[100px] sm:blur-[130px] pointer-events-none rounded-full transition-all duration-700 ${
+        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[85vw] max-w-[560px] h-[240px] sm:h-[320px] blur-[90px] sm:blur-[120px] pointer-events-none rounded-full transition-all duration-700 ${
           platform === "linkedin"
-            ? "bg-gradient-to-b from-blue-600/20 to-transparent"
-            : "bg-gradient-to-b from-[#d4af37]/15 to-transparent"
+            ? "bg-gradient-to-b from-blue-600/15 to-transparent"
+            : "bg-gradient-to-b from-[#e7b92f]/10 to-transparent"
         }`}
       />
 
       <div className="container mx-auto max-w-4xl text-center relative z-10">
-        {/* Top Feature Badge */}
+        {/* Top Feature Eyebrow Badge */}
         <div className="inline-flex items-center justify-center mb-4 sm:mb-5">
-          <Badge
-            variant="default"
-            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-xs font-medium backdrop-blur-md shadow-lg transition-all duration-300 ${
+          <div
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-medium backdrop-blur-md transition-all duration-300 ${
               platform === "linkedin"
-                ? "border-sky-500/30 bg-sky-500/10 text-sky-300 shadow-sky-500/15"
-                : "border-[#d4af37]/30 bg-[#d4af37]/10 text-[#d4af37] shadow-[#d4af37]/10"
+                ? "border-sky-500/20 bg-sky-500/10 text-sky-300"
+                : "border-[#e7b92f]/25 bg-[#e7b92f]/10 text-[#e7b92f]"
             }`}
           >
             <Sparkles
-              className={`h-3.5 w-3.5 mr-1 ${
-                platform === "linkedin" ? "text-sky-400" : "text-[#e8a33d]"
+              className={`h-3 w-3 ${
+                platform === "linkedin" ? "text-sky-400" : "text-[#e7b92f]"
               }`}
             />
-            {t("badge")}
-          </Badge>
+            <span className="tracking-wide">{t("badge")}</span>
+          </div>
         </div>
 
         {/* Hero Title */}
-        <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3 sm:mb-4 leading-tight transition-all break-words">
+        <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#f5f3ed] mb-3 sm:mb-4 leading-[1.12] transition-all break-words max-w-3xl mx-auto">
           {platform === "linkedin" ? (
             <>
               Download Public{" "}
@@ -282,16 +279,16 @@ export function HeroInput() {
         </h1>
 
         {/* Hero Subtitle */}
-        <p className="text-xs sm:text-base text-neutral-300 max-w-2xl mx-auto mb-6 sm:mb-7 leading-relaxed">
+        <p className="text-xs sm:text-base text-[#a5a39c] max-w-xl mx-auto mb-7 sm:mb-8 leading-relaxed">
           {platform === "linkedin" ? t("subtitleLinkedin") : t("subtitleInstagram")}
         </p>
 
-        {/* Platform Toggle Tabs & History Button Row */}
-        <div className="mx-auto mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        {/* Platform Toggle Tabs */}
+        <div className="mx-auto mb-6 flex items-center justify-center">
           <div
             role="tablist"
             aria-label="Select platform"
-            className="inline-flex items-center rounded-2xl border border-white/10 bg-neutral-900/80 p-1 sm:p-1.5 backdrop-blur-xl shadow-xl overflow-hidden"
+            className="inline-flex items-center rounded-xl border border-white/[0.08] bg-[#101010] p-1 backdrop-blur-xl shadow-lg"
           >
             <button
               type="button"
@@ -301,14 +298,14 @@ export function HeroInput() {
                 setPlatform("instagram");
                 setResolveError(null);
               }}
-              className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#d4af37] focus-visible:outline-none ${
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-lg px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#e7b92f]/50 focus-visible:outline-none ${
                 platform === "instagram"
-                  ? "gold-gradient-bg text-neutral-950 shadow-md shadow-[#d4af37]/20 font-bold"
-                  : "text-neutral-400 hover:text-white hover:bg-white/5"
+                  ? "gold-gradient-bg text-[#080808] shadow-sm shadow-[#e7b92f]/20 font-bold"
+                  : "text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.04]"
               }`}
             >
               <InstagramIcon className="h-4 w-4 shrink-0" />
-              <span className="truncate">{t("instagramTab")}</span>
+              <span>{t("instagramTab")}</span>
             </button>
 
             <button
@@ -319,27 +316,27 @@ export function HeroInput() {
                 setPlatform("linkedin");
                 setResolveError(null);
               }}
-              className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:outline-none ${
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-lg px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:outline-none ${
                 platform === "linkedin"
-                  ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-md shadow-blue-500/25 font-bold"
-                  : "text-neutral-400 hover:text-white hover:bg-white/5"
+                  ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-sm shadow-blue-500/20 font-bold"
+                  : "text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.04]"
               }`}
             >
               <LinkedInIcon className="h-4 w-4 shrink-0" />
-              <span className="truncate">{t("linkedinTab")}</span>
+              <span>{t("linkedinTab")}</span>
             </button>
           </div>
         </div>
 
-        {/* Main Input Glass Card */}
+        {/* Main Input Panel */}
         <form
           onSubmit={handleSearch}
-          className={`relative mx-auto max-w-2xl rounded-2xl p-2 sm:p-2.5 transition-all duration-300 ${
+          className={`relative mx-auto max-w-2xl rounded-2xl p-1.5 sm:p-2 transition-all duration-300 border bg-[#121212] shadow-2xl shadow-black/50 ${
             inputFocused
               ? platform === "linkedin"
-                ? "border-blue-500/40 bg-neutral-900/90 ring-2 ring-blue-500/40 shadow-2xl shadow-blue-500/10 backdrop-blur-2xl"
-                : "glass-panel-gold ring-2 ring-[#d4af37]/50 shadow-2xl shadow-[#d4af37]/10"
-              : "glass-panel"
+                ? "border-sky-500/40 ring-2 ring-sky-500/30"
+                : "border-[#e7b92f]/40 ring-2 ring-[#e7b92f]/30"
+              : "border-white/[0.1] hover:border-white/[0.16]"
           }`}
         >
           <div className="flex flex-col sm:flex-row items-center gap-2">
@@ -361,7 +358,7 @@ export function HeroInput() {
                 onBlur={() => setInputFocused(false)}
                 placeholder={placeholderText}
                 aria-label="Post URL"
-                className="w-full h-11 sm:h-12 pl-3.5 sm:pl-4 pr-20 sm:pr-24 bg-transparent text-sm sm:text-base text-white placeholder:text-neutral-500 focus:outline-none"
+                className="w-full h-11 sm:h-12 pl-3.5 sm:pl-4 pr-20 sm:pr-24 bg-transparent text-sm sm:text-base text-[#f5f3ed] placeholder:text-[#6f6d66] focus:outline-none"
               />
 
               {/* Action buttons inside input right side */}
@@ -373,7 +370,7 @@ export function HeroInput() {
                       onClick={handleCopyInputUrl}
                       aria-label="Copy input URL"
                       title="Copy URL to clipboard"
-                      className="p-1.5 rounded-lg text-neutral-400 hover:text-[#d4af37] hover:bg-white/10 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-[#a5a39c] hover:text-[#e7b92f] hover:bg-white/[0.06] transition-colors cursor-pointer"
                     >
                       {copiedUrl ? (
                         <Check className="h-4 w-4 text-emerald-400" />
@@ -386,7 +383,7 @@ export function HeroInput() {
                       onClick={handleClear}
                       aria-label="Clear input"
                       title={t("clear")}
-                      className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.06] transition-colors cursor-pointer"
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -396,7 +393,7 @@ export function HeroInput() {
                     type="button"
                     onClick={handlePaste}
                     aria-label="Paste URL from clipboard"
-                    className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg text-xs font-medium bg-white/10 text-neutral-300 hover:text-[#d4af37] hover:bg-white/15 transition-all border border-white/10 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-white/[0.06] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.1] transition-all border border-white/[0.08] cursor-pointer"
                   >
                     <Clipboard className="h-3 w-3" />
                     <span className="hidden sm:inline">{t("pasteButton")}</span>
@@ -409,10 +406,10 @@ export function HeroInput() {
             <Button
               type="submit"
               disabled={isResolving || !url.trim()}
-              className={`w-full sm:w-auto h-11 sm:h-12 px-5 sm:px-6 rounded-xl font-semibold hover:brightness-110 shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`w-full sm:w-auto h-11 sm:h-12 px-5 sm:px-6 rounded-xl font-semibold hover:brightness-105 shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all ${
                 platform === "linkedin"
                   ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-blue-500/20"
-                  : "gold-gradient-bg text-neutral-950 shadow-[#d4af37]/20"
+                  : "gold-gradient-bg text-[#080808] shadow-[#e7b92f]/15"
               }`}
             >
               {isResolving ? (
@@ -430,11 +427,11 @@ export function HeroInput() {
           </div>
         </form>
 
-        {/* Recent Links Tray */}
+        {/* Recent Links Workspace Tray */}
         {recentList.length > 0 ? (
-          <div className="mt-3.5 mx-auto max-w-2xl flex flex-wrap items-center justify-between gap-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-xl text-xs">
-            <div className="flex items-center gap-1.5 text-neutral-400 font-medium shrink-0">
-              <History className="h-3.5 w-3.5 text-[#d4af37]" />
+          <div className="mt-3.5 mx-auto max-w-2xl flex flex-wrap items-center justify-between gap-2 p-2 sm:p-2.5 rounded-xl bg-[#101010]/90 border border-white/[0.06] backdrop-blur-xl text-xs">
+            <div className="flex items-center gap-1.5 text-[#a5a39c] font-medium shrink-0">
+              <History className="h-3.5 w-3.5 text-[#e7b92f]" />
               <span className="hidden sm:inline">Recent:</span>
             </div>
 
@@ -451,12 +448,12 @@ export function HeroInput() {
                     handleSearch(undefined, item.url);
                   }}
                   title={`Re-search: ${item.url}`}
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-[11px] text-neutral-200 hover:text-white transition-all max-w-[160px] sm:max-w-[200px] truncate cursor-pointer"
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] text-[11px] text-[#a5a39c] hover:text-[#f5f3ed] transition-all max-w-[160px] sm:max-w-[200px] truncate cursor-pointer"
                 >
                   {item.platform === "linkedin" ? (
                     <LinkedInIcon className="h-3 w-3 text-sky-400 shrink-0" />
                   ) : (
-                    <InstagramIcon className="h-3 w-3 text-[#d4af37] shrink-0" />
+                    <InstagramIcon className="h-3 w-3 text-[#e7b92f] shrink-0" />
                   )}
                   <span className="truncate">
                     {item.customName || item.authorUsername || item.url.replace(/^https?:\/\/(www\.)?/, "").slice(0, 18)}
@@ -468,21 +465,21 @@ export function HeroInput() {
             <button
               type="button"
               onClick={() => setIsHistoryModalOpen(true)}
-              className="text-[11px] font-semibold text-[#d4af37] hover:underline shrink-0 cursor-pointer ml-auto"
+              className="text-[11px] font-semibold text-[#e7b92f] hover:underline shrink-0 cursor-pointer ml-auto"
             >
               All ({historyCount}) →
             </button>
           </div>
         ) : (
-          <div className="mt-3.5 mx-auto max-w-2xl flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] text-neutral-400">
+          <div className="mt-3.5 mx-auto max-w-2xl flex items-center justify-between gap-2 px-3.5 py-2 rounded-xl bg-[#101010]/70 border border-white/[0.04] text-[11px] text-[#6f6d66]">
             <div className="flex items-center gap-1.5">
-              <History className="h-3.5 w-3.5 text-neutral-500" />
-              <span>Link history & PDF export will automatically record here as you search.</span>
+              <History className="h-3.5 w-3.5 text-[#6f6d66]" />
+              <span>Link history & PDF export will record here automatically.</span>
             </div>
             <button
               type="button"
               onClick={() => setIsHistoryModalOpen(true)}
-              className="text-[11px] font-medium text-neutral-300 hover:text-white hover:underline cursor-pointer"
+              className="text-[11px] font-medium text-[#a5a39c] hover:text-[#f5f3ed] hover:underline cursor-pointer"
             >
               Open History
             </button>
@@ -500,18 +497,18 @@ export function HeroInput() {
                 toast.info("Paste any post link above to preview slides and convert directly to PDF!");
               }
             }}
-            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#d4af37]/40 transition-all cursor-pointer backdrop-blur-md"
+            className="group p-3 rounded-xl border border-white/[0.06] bg-[#101010]/60 hover:bg-[#121212] hover:border-[#e7b92f]/30 transition-all cursor-pointer backdrop-blur-md"
           >
             <div className="flex items-center gap-2 mb-1">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#d4af37]/10 text-[#d4af37]">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#e7b92f]/10 text-[#e7b92f]">
                 <FileText className="h-3.5 w-3.5" />
               </div>
-              <span className="text-xs font-bold text-white group-hover:text-[#d4af37] transition-colors">
+              <span className="text-xs font-bold text-[#f5f3ed] group-hover:text-[#e7b92f] transition-colors">
                 PDF Converter
               </span>
             </div>
-            <p className="text-[11px] text-neutral-400 line-clamp-2">
-              Drag to reorder carousel slides & export to A4, Letter, or Fit-Image PDF.
+            <p className="text-[11px] text-[#a5a39c] line-clamp-2">
+              Reorder carousel slides & export to A4, Letter, or Fit-Image PDF.
             </p>
           </div>
 
@@ -519,35 +516,35 @@ export function HeroInput() {
             onClick={() => {
               toast.info("Paste any public post URL to batch-download all images and videos in 1 ZIP archive.");
             }}
-            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-sky-500/40 transition-all cursor-pointer backdrop-blur-md"
+            className="group p-3 rounded-xl border border-white/[0.06] bg-[#101010]/60 hover:bg-[#121212] hover:border-sky-500/30 transition-all cursor-pointer backdrop-blur-md"
           >
             <div className="flex items-center gap-2 mb-1">
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-500/10 text-sky-400">
                 <FileArchive className="h-3.5 w-3.5" />
               </div>
-              <span className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">
+              <span className="text-xs font-bold text-[#f5f3ed] group-hover:text-sky-400 transition-colors">
                 ZIP Bundler
               </span>
             </div>
-            <p className="text-[11px] text-neutral-400 line-clamp-2">
-              Package up to 20 full-resolution assets into a single instant ZIP download.
+            <p className="text-[11px] text-[#a5a39c] line-clamp-2">
+              Package up to 20 full-resolution assets into a single instant ZIP archive.
             </p>
           </div>
 
           <div
             onClick={() => setIsHistoryModalOpen(true)}
-            className="group p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 transition-all cursor-pointer backdrop-blur-md"
+            className="group p-3 rounded-xl border border-white/[0.06] bg-[#101010]/60 hover:bg-[#121212] hover:border-purple-500/30 transition-all cursor-pointer backdrop-blur-md"
           >
             <div className="flex items-center gap-2 mb-1">
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-purple-500/10 text-purple-400">
                 <History className="h-3.5 w-3.5" />
               </div>
-              <span className="text-xs font-bold text-white group-hover:text-purple-400 transition-colors">
+              <span className="text-xs font-bold text-[#f5f3ed] group-hover:text-purple-400 transition-colors">
                 Link History
               </span>
             </div>
-            <p className="text-[11px] text-neutral-400 line-clamp-2">
-              100% private local device storage. Label, re-search, and manage recent links.
+            <p className="text-[11px] text-[#a5a39c] line-clamp-2">
+              100% private local storage. Label, re-search, and manage recent links.
             </p>
           </div>
         </div>
@@ -557,37 +554,37 @@ export function HeroInput() {
           <div
             className={`mt-4 mx-auto max-w-2xl rounded-2xl border p-4 text-left backdrop-blur-xl animate-in fade-in zoom-in-95 transition-all ${
               resolveError.code === "PRIVATE_OR_GATED"
-                ? "border-purple-500/40 bg-purple-950/40 text-purple-200 shadow-lg shadow-purple-500/10"
+                ? "border-purple-500/30 bg-[#15101a] text-purple-200 shadow-lg shadow-purple-500/5"
                 : resolveError.code === "NOT_FOUND"
-                ? "border-sky-500/30 bg-slate-900/80 text-sky-200 shadow-lg shadow-sky-500/10"
+                ? "border-sky-500/30 bg-[#0d141e] text-sky-200 shadow-lg shadow-sky-500/5"
                 : resolveError.code === "RATE_LIMITED"
-                ? "border-orange-500/40 bg-orange-950/40 text-orange-200 shadow-lg shadow-orange-500/10"
+                ? "border-orange-500/30 bg-[#1a120c] text-orange-200 shadow-lg shadow-orange-500/5"
                 : resolveError.code === "UNSUPPORTED_URL"
-                ? "border-amber-500/40 bg-amber-950/40 text-amber-200 shadow-lg shadow-amber-500/10"
-                : "border-red-500/40 bg-red-950/40 text-red-200 shadow-lg shadow-red-500/10"
+                ? "border-amber-500/30 bg-[#19140c] text-amber-200 shadow-lg shadow-amber-500/5"
+                : "border-red-500/30 bg-[#1a0f0f] text-red-200 shadow-lg shadow-red-500/5"
             }`}
           >
             <div className="flex items-start gap-3.5">
               {/* Dynamic Contextual Icon */}
               <div className="shrink-0 mt-0.5">
                 {resolveError.code === "PRIVATE_OR_GATED" ? (
-                  <div className="p-2 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  <div className="p-2 rounded-xl bg-purple-500/15 text-purple-300 border border-purple-500/25">
                     <Lock className="h-5 w-5" />
                   </div>
                 ) : resolveError.code === "NOT_FOUND" ? (
-                  <div className="p-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                  <div className="p-2 rounded-xl bg-sky-500/15 text-sky-300 border border-sky-500/25">
                     <SearchX className="h-5 w-5" />
                   </div>
                 ) : resolveError.code === "RATE_LIMITED" ? (
-                  <div className="p-2 rounded-xl bg-orange-500/20 text-orange-300 border border-orange-500/30">
+                  <div className="p-2 rounded-xl bg-orange-500/15 text-orange-300 border border-orange-500/25">
                     <Clock className="h-5 w-5" />
                   </div>
                 ) : resolveError.code === "UNSUPPORTED_URL" ? (
-                  <div className="p-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  <div className="p-2 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/25">
                     <Link2Off className="h-5 w-5" />
                   </div>
                 ) : (
-                  <div className="p-2 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30">
+                  <div className="p-2 rounded-xl bg-red-500/15 text-red-300 border border-red-500/25">
                     <ServerCrash className="h-5 w-5" />
                   </div>
                 )}
@@ -615,7 +612,7 @@ export function HeroInput() {
                   <div className="mt-2.5 pt-2 border-t border-amber-500/20 text-[11px] space-y-1">
                     <p className="font-semibold text-amber-300">Accepted Link Formats:</p>
                     <p className="font-mono text-[10px] text-amber-200/90">
-                      • Instagram: https://www.instagram.com/p/DFxyz... or /reel/...
+                      • Instagram: https://www.instagram.com/p/... or /reel/...
                     </p>
                     <p className="font-mono text-[10px] text-amber-200/90">
                       • LinkedIn: https://www.linkedin.com/feed/update/... or /posts/...

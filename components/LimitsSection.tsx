@@ -34,39 +34,39 @@ export function LimitsSection() {
   ];
 
   return (
-    <section id="limits" className="w-full py-16 px-4 sm:px-6 border-t border-white/5">
+    <section id="limits" className="w-full py-16 px-4 sm:px-6 border-t border-white/[0.04]">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f5f3ed] mb-2">
             {t("title")}
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-[#a5a39c] max-w-xl mx-auto">
             {t("subtitle")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {limits.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-xl hover:border-white/20 transition-colors"
+                className="flex items-start gap-3.5 rounded-2xl border border-white/[0.08] bg-[#101010]/70 p-5 backdrop-blur-xl hover:border-white/[0.16] transition-colors"
               >
                 <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all ${
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all ${
                     isLinkedIn
                       ? "bg-sky-500/10 border border-sky-500/20 text-sky-400"
-                      : "bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37]"
+                      : "bg-[#e7b92f]/10 border border-[#e7b92f]/20 text-[#e7b92f]"
                   }`}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4.5 w-4.5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-1">
+                  <h3 className="text-sm font-semibold text-[#f5f3ed] mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-[#a5a39c] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -78,4 +78,3 @@ export function LimitsSection() {
     </section>
   );
 }
-

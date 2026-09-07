@@ -17,14 +17,14 @@ export function BrandIcon({ platform = "instagram", className = "h-5 w-5" }: Bra
     >
       <defs>
         <linearGradient id="brandGradInsta" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fef08a" />
-          <stop offset="50%" stopColor="#d4af37" />
-          <stop offset="100%" stopColor="#e8a33d" />
+          <stop offset="0%" stopColor="#fef3c7" />
+          <stop offset="50%" stopColor="#e7b92f" />
+          <stop offset="100%" stopColor="#c29017" />
         </linearGradient>
         <linearGradient id="brandGradLinkedIn" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60a5fa" />
-          <stop offset="50%" stopColor="#0a66c2" />
-          <stop offset="100%" stopColor="#0284c7" />
+          <stop offset="0%" stopColor="#7dd3fc" />
+          <stop offset="50%" stopColor="#0284c7" />
+          <stop offset="100%" stopColor="#0369a1" />
         </linearGradient>
       </defs>
 
@@ -41,7 +41,7 @@ export function BrandIcon({ platform = "instagram", className = "h-5 w-5" }: Bra
       {/* Central Stream Download Arrow */}
       <path
         d="M12 7V15M12 15L8.5 11.5M12 15L15.5 11.5"
-        stroke={isLinkedIn ? "#38bdf8" : "#fef08a"}
+        stroke={isLinkedIn ? "#38bdf8" : "#fef3c7"}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

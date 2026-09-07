@@ -13,19 +13,19 @@ export function Header() {
   const isLinkedIn = platform === "linkedin";
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-neutral-950/75 backdrop-blur-xl transition-all">
-      <div className="container mx-auto flex h-14 sm:h-16 max-w-6xl items-center justify-between px-3 sm:px-6">
+    <header className="sticky top-0 z-40 w-full border-b border-white/[0.06] bg-[#080808]/80 backdrop-blur-xl transition-all">
+      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2 sm:gap-2.5 group">
+        <a href="#" className="flex items-center gap-2.5 sm:gap-3 group">
           <div
-            className={`relative flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl p-[1px] transition-all duration-300 group-hover:scale-105 ${
+            className={`relative flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl p-[1px] transition-all duration-300 group-hover:scale-105 ${
               isLinkedIn
-                ? "bg-gradient-to-br from-sky-400 via-blue-500 to-blue-700 shadow-lg shadow-blue-500/25"
-                : "bg-gradient-to-br from-[#d4af37] via-[#e8a33d] to-[#854d0e] shadow-lg shadow-[#d4af37]/20"
+                ? "bg-gradient-to-br from-sky-400 via-blue-500 to-blue-700 shadow-md shadow-blue-500/20"
+                : "bg-gradient-to-br from-[#fef3c7] via-[#e7b92f] to-[#c29017] shadow-md shadow-[#e7b92f]/15"
             }`}
           >
-            <div className="flex h-full w-full items-center justify-center rounded-[7px] sm:rounded-[11px] bg-neutral-950">
-              <BrandIcon platform={platform} className="h-4 w-4 sm:h-5 sm:w-5" />
+            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[#0d0d0d]">
+              <BrandIcon platform={platform} className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
             </div>
           </div>
           <div className="flex flex-col">
@@ -36,7 +36,7 @@ export function Header() {
             >
               {t("title")}
             </span>
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-400 font-medium -mt-0.5 sm:-mt-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#a5a39c] font-medium -mt-0.5 sm:-mt-1">
               {t("tagline")}
             </span>
           </div>
@@ -44,12 +44,12 @@ export function Header() {
 
         {/* Navigation Links & Language Switcher */}
         <div className="flex items-center gap-3 sm:gap-6">
-          <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-300">
+          <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-[#a5a39c]">
             <button
               type="button"
               onClick={() => setIsHistoryModalOpen(true)}
               className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
-                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#d4af37]"
+                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#e7b92f]"
               }`}
             >
               <History className="h-3.5 w-3.5" />
@@ -58,7 +58,7 @@ export function Header() {
             <a
               href="#how-it-works"
               className={`transition-colors ${
-                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#d4af37]"
+                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#e7b92f]"
               }`}
             >
               {t("howItWorks")}
@@ -66,7 +66,7 @@ export function Header() {
             <a
               href="#limits"
               className={`transition-colors ${
-                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#d4af37]"
+                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#e7b92f]"
               }`}
             >
               {t("limits")}
@@ -74,7 +74,7 @@ export function Header() {
             <a
               href="#terms"
               className={`transition-colors ${
-                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#d4af37]"
+                isLinkedIn ? "hover:text-sky-400" : "hover:text-[#e7b92f]"
               }`}
             >
               {t("terms")}
@@ -86,9 +86,9 @@ export function Header() {
             type="button"
             onClick={() => setIsHistoryModalOpen(true)}
             aria-label="Recent Links History"
-            className="flex md:hidden items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 hover:text-white hover:bg-white/10 transition-colors"
+            className="flex md:hidden items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.08] transition-colors cursor-pointer"
           >
-            <History className="h-3.5 w-3.5 text-[#d4af37]" />
+            <History className={`h-3.5 w-3.5 ${isLinkedIn ? "text-sky-400" : "text-[#e7b92f]"}`} />
             <span>History</span>
           </button>
 
@@ -98,4 +98,3 @@ export function Header() {
     </header>
   );
 }
-

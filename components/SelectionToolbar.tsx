@@ -5,12 +5,9 @@ import { useTranslations } from "next-intl";
 import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import {
-  Download,
   FileArchive,
   FileText,
   Loader2,
-  CheckCircle,
-  AlertCircle,
   X,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -163,7 +160,7 @@ export function SelectionToolbar() {
 
   return (
     <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.25rem)] sm:w-full max-w-2xl px-1 sm:px-4 pb-[env(safe-area-inset-bottom,0px)] animate-in fade-in slide-in-from-bottom-5 duration-300">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3 rounded-2xl border border-white/15 bg-neutral-950/90 p-2.5 sm:p-4 backdrop-blur-2xl shadow-2xl shadow-black/90 ring-1 ring-white/10 w-full overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3 rounded-2xl border border-white/[0.12] bg-[#101010]/95 p-2.5 sm:p-3.5 backdrop-blur-2xl shadow-2xl shadow-black/90 ring-1 ring-white/[0.06] w-full overflow-hidden">
         {/* Selected count badge & deselect row */}
         <div className="flex items-center justify-between sm:justify-start gap-2 min-w-0">
           <div className="flex items-center gap-2 min-w-0">
@@ -171,12 +168,12 @@ export function SelectionToolbar() {
               className={`flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all ${
                 isLinkedIn
                   ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-md shadow-blue-500/20"
-                  : "bg-gradient-to-r from-[#d4af37] to-[#e8a33d] text-neutral-950"
+                  : "gold-gradient-bg text-[#080808]"
               }`}
             >
               {selectedIds.length}
             </div>
-            <span className="text-xs font-semibold text-white truncate">
+            <span className="text-xs font-semibold text-[#f5f3ed] truncate">
               {t("selectedItems", { count: selectedIds.length })}
             </span>
           </div>
@@ -185,24 +182,24 @@ export function SelectionToolbar() {
             type="button"
             onClick={deselectAll}
             title="Deselect all"
-            className="flex sm:hidden items-center gap-1 text-[11px] text-neutral-400 hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-colors"
+            className="flex sm:hidden items-center gap-1 text-[11px] text-[#a5a39c] hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-colors"
           >
             <X className="h-3 w-3" />
             <span>Clear</span>
           </button>
         </div>
 
-        {/* Action Buttons: on mobile full width 50/50 split, on desktop compact inline */}
+        {/* Action Buttons */}
         <div className="flex items-center gap-2 w-full sm:w-auto min-w-0">
           {/* ZIP Download Button */}
           <Button
             size="sm"
             onClick={triggerZipDownload}
             disabled={isProcessingBatch}
-            className={`flex-1 sm:flex-initial min-w-0 font-semibold h-10 sm:h-9 px-2.5 sm:px-4 text-xs hover:brightness-110 shadow-md cursor-pointer transition-all ${
+            className={`flex-1 sm:flex-initial min-w-0 font-semibold h-10 sm:h-9 px-3 sm:px-4 text-xs hover:brightness-105 shadow-md cursor-pointer transition-all ${
               isLinkedIn
-                ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-blue-500/25"
-                : "gold-gradient-bg text-neutral-950 shadow-[#d4af37]/20"
+                ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-blue-500/20"
+                : "gold-gradient-bg text-[#080808] shadow-[#e7b92f]/15"
             }`}
           >
             {isProcessingBatch && activeBatchType === "zip" ? (
@@ -225,8 +222,8 @@ export function SelectionToolbar() {
             onClick={handleOpenPdfDialog}
             disabled={isProcessingBatch || !hasImages}
             title={!hasImages ? t("pdfOnlyImagesTooltip") : undefined}
-            className={`flex-1 sm:flex-initial min-w-0 h-10 sm:h-9 px-2.5 sm:px-4 text-xs font-medium border-white/10 bg-white/10 text-white hover:bg-white/15 cursor-pointer disabled:opacity-40 transition-colors ${
-              isLinkedIn ? "hover:border-sky-400/40" : "hover:border-[#d4af37]/40"
+            className={`flex-1 sm:flex-initial min-w-0 h-10 sm:h-9 px-3 sm:px-4 text-xs font-medium border-white/[0.08] bg-white/[0.06] text-[#f5f3ed] hover:bg-white/[0.1] cursor-pointer disabled:opacity-30 transition-colors ${
+              isLinkedIn ? "hover:border-sky-400/40" : "hover:border-[#e7b92f]/40"
             }`}
           >
             {isProcessingBatch && activeBatchType === "pdf" ? (
@@ -238,7 +235,7 @@ export function SelectionToolbar() {
               <>
                 <FileText
                   className={`h-3.5 w-3.5 shrink-0 ${
-                    isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
+                    isLinkedIn ? "text-sky-400" : "text-[#e7b92f]"
                   }`}
                 />
                 <span className="truncate">{t("convertToPdf")}</span>
@@ -259,4 +256,3 @@ export function SelectionToolbar() {
     </div>
   );
 }
-

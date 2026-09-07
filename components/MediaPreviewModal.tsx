@@ -119,7 +119,7 @@ export function MediaPreviewModal({
     <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogPrimitive.Portal>
         {/* Backdrop Overlay */}
-        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl transition-opacity animate-in fade-in-0 duration-200" />
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl transition-opacity animate-in fade-in-0 duration-200" />
 
         {/* Modal Container */}
         <DialogPrimitive.Content className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 outline-none pointer-events-none">
@@ -133,8 +133,8 @@ export function MediaPreviewModal({
             onClick={(e) => e.stopPropagation()}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className={`pointer-events-auto relative flex flex-col w-full max-w-5xl h-full max-h-[88dvh] sm:max-h-[92vh] rounded-2xl border bg-neutral-950/95 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
-              isLinkedIn ? "border-sky-500/30" : "border-white/15"
+            className={`pointer-events-auto relative flex flex-col w-full max-w-5xl h-full max-h-[88dvh] sm:max-h-[92vh] rounded-2xl border bg-[#101010]/98 shadow-2xl backdrop-blur-2xl overflow-hidden animate-in zoom-in-95 duration-200 transition-all ${
+              isLinkedIn ? "border-sky-500/25" : "border-white/[0.1]"
             }`}
           >
             {/* Flashlight background spotlight */}
@@ -143,35 +143,18 @@ export function MediaPreviewModal({
                 className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
                 style={{
                   background: isLinkedIn
-                    ? `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.18), rgba(14, 165, 233, 0.04) 40%, transparent 75%)`
-                    : `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.22), rgba(232, 163, 61, 0.05) 40%, transparent 75%)`,
-                }}
-              />
-            )}
-
-            {/* Dynamic flashlight glowing border */}
-            {mousePos && (
-              <div
-                className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
-                style={{
-                  background: isLinkedIn
-                    ? `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
-                    : `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
-                  WebkitMask:
-                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  WebkitMaskComposite: "xor",
-                  maskComposite: "exclude",
-                  padding: "1.5px",
+                    ? `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.1), transparent 70%)`
+                    : `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(231, 185, 47, 0.1), transparent 70%)`,
                 }}
               />
             )}
 
             {/* Top Bar Header */}
-            <div className="relative z-20 flex h-12 sm:h-14 shrink-0 items-center justify-between border-b border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md gap-2 min-w-0">
+            <div className="relative z-20 flex h-12 sm:h-14 shrink-0 items-center justify-between border-b border-white/[0.08] bg-[#0d0d0d] px-3 sm:px-6 backdrop-blur-md gap-2 min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 truncate">
                 <span
                   className={`text-xs font-bold shrink-0 ${
-                    isLinkedIn ? "text-sky-400" : "text-[#d4af37]"
+                    isLinkedIn ? "text-sky-400" : "text-[#e7b92f]"
                   }`}
                 >
                   {t("itemCount", {
@@ -202,7 +185,7 @@ export function MediaPreviewModal({
                 </Badge>
 
                 {currentItem.width && currentItem.height && (
-                  <span className="hidden sm:inline-block rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 border border-white/10 shrink-0">
+                  <span className="hidden sm:inline-block rounded-full bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-[#a5a39c] border border-white/[0.08] shrink-0">
                     {currentItem.width} × {currentItem.height}
                   </span>
                 )}
@@ -218,8 +201,8 @@ export function MediaPreviewModal({
                     isSelected
                       ? isLinkedIn
                         ? "border-sky-400 bg-sky-500/20 text-sky-300"
-                        : "border-[#d4af37] bg-[#d4af37]/20 text-[#d4af37]"
-                      : "border-white/20 text-neutral-300 hover:border-white/40 hover:text-white"
+                        : "border-[#e7b92f] bg-[#e7b92f]/20 text-[#e7b92f]"
+                      : "border-white/[0.12] text-[#a5a39c] hover:border-white/[0.25] hover:text-[#f5f3ed]"
                   }`}
                 >
                   <div
@@ -227,8 +210,8 @@ export function MediaPreviewModal({
                       isSelected
                         ? isLinkedIn
                           ? "border-sky-400 bg-sky-500 text-neutral-950"
-                          : "border-[#d4af37] bg-[#d4af37] text-neutral-950"
-                        : "border-neutral-400"
+                          : "border-[#e7b92f] bg-[#e7b92f] text-[#080808]"
+                        : "border-neutral-500"
                     }`}
                   >
                     {isSelected && <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 stroke-[3]" />}
@@ -256,7 +239,7 @@ export function MediaPreviewModal({
                   }}
                   aria-label="Copy direct media link"
                   title="Copy direct download link"
-                  className="h-7 sm:h-8 gap-1 px-2 sm:px-2.5 text-xs border-white/20 text-neutral-300 hover:border-white/40 hover:text-white cursor-pointer"
+                  className="h-7 sm:h-8 gap-1 px-2 sm:px-2.5 text-xs border-white/[0.12] text-[#a5a39c] hover:border-white/[0.25] hover:text-[#f5f3ed] cursor-pointer"
                 >
                   <Copy className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   <span className="hidden md:inline">Copy Link</span>
@@ -268,8 +251,8 @@ export function MediaPreviewModal({
                   onClick={() => onDownloadSingle(currentItem)}
                   className={`h-7 sm:h-8 gap-1 px-2 sm:px-3 text-xs font-semibold cursor-pointer transition-all ${
                     isLinkedIn
-                      ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-md shadow-blue-500/25"
-                      : "gold-gradient-bg text-neutral-950"
+                      ? "bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 text-white shadow-sm shadow-blue-500/25"
+                      : "gold-gradient-bg text-[#080808]"
                   }`}
                 >
                   <Download className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
@@ -280,28 +263,28 @@ export function MediaPreviewModal({
                 <button
                   onClick={onClose}
                   aria-label={t("close")}
-                  className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                  className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg text-[#a5a39c] hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
               </div>
             </div>
 
-            {/* Center Media Display Area (No flashlight light inside media section, 100% pure contrast) */}
-            <div className="relative z-10 isolate flex flex-1 items-center justify-center min-h-0 w-full p-2 sm:p-6 bg-black select-none overflow-hidden">
+            {/* Center Media Display Area */}
+            <div className="relative z-10 isolate flex flex-1 items-center justify-center min-h-0 w-full p-2 sm:p-6 bg-[#080808] select-none overflow-hidden">
               {/* Previous Button */}
               {items.length > 1 && (
                 <button
                   type="button"
                   onClick={handlePrev}
                   aria-label={t("prev")}
-                  className={`absolute left-1.5 sm:left-4 z-30 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
+                  className={`absolute left-2 sm:left-4 z-30 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/[0.15] bg-[#121212]/80 text-[#f5f3ed] shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ${
                     isLinkedIn
                       ? "hover:border-sky-400 hover:bg-sky-500 hover:text-neutral-950"
-                      : "hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
+                      : "hover:border-[#e7b92f] hover:bg-[#e7b92f] hover:text-[#080808]"
                   }`}
                 >
-                  <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               )}
 
@@ -310,10 +293,10 @@ export function MediaPreviewModal({
                 {!imgLoaded && !imgError && currentItem.type === "image" && (
                   <div className="absolute flex h-24 w-24 items-center justify-center">
                     <div
-                      className={`h-8 w-8 rounded-full border-2 animate-spin ${
+                      className={`h-7 w-7 rounded-full border-2 animate-spin ${
                         isLinkedIn
                           ? "border-sky-500/30 border-t-sky-400"
-                          : "border-[#d4af37]/30 border-t-[#d4af37]"
+                          : "border-[#e7b92f]/30 border-t-[#e7b92f]"
                       }`}
                     />
                   </div>
@@ -349,23 +332,23 @@ export function MediaPreviewModal({
                   type="button"
                   onClick={handleNext}
                   aria-label={t("next")}
-                  className={`absolute right-1.5 sm:right-4 z-30 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-neutral-900/80 text-white shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer ${
+                  className={`absolute right-2 sm:right-4 z-30 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/[0.15] bg-[#121212]/80 text-[#f5f3ed] shadow-2xl backdrop-blur-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ${
                     isLinkedIn
                       ? "hover:border-sky-400 hover:bg-sky-500 hover:text-neutral-950"
-                      : "hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-neutral-950"
+                      : "hover:border-[#e7b92f] hover:bg-[#e7b92f] hover:text-[#080808]"
                   }`}
                 >
-                  <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               )}
             </div>
 
             {/* Bottom Bar Info */}
-            <div className="flex h-9 sm:h-11 shrink-0 items-center justify-between border-t border-white/10 bg-neutral-900/80 px-3 sm:px-6 backdrop-blur-md z-20">
-              <span className="text-[10px] sm:text-[11px] text-neutral-400 font-mono truncate max-w-[200px] sm:max-w-md">
+            <div className="flex h-9 sm:h-11 shrink-0 items-center justify-between border-t border-white/[0.08] bg-[#0d0d0d] px-3 sm:px-6 backdrop-blur-md z-20">
+              <span className="text-[10px] sm:text-[11px] text-[#a5a39c] font-mono truncate max-w-[200px] sm:max-w-md">
                 {currentItem.filename}
               </span>
-              <span className="hidden sm:inline-block text-[11px] text-neutral-500">
+              <span className="hidden sm:inline-block text-[11px] text-[#6f6d66]">
                 {t("keyboardHint")}
               </span>
             </div>
@@ -375,4 +358,3 @@ export function MediaPreviewModal({
     </DialogPrimitive.Root>
   );
 }
-

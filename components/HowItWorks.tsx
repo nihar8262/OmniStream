@@ -46,54 +46,100 @@ export function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="w-full py-16 px-4 sm:px-6 relative">
+    <section id="how-it-works" className="w-full py-16 px-4 sm:px-6 relative border-t border-white/[0.04]">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f5f3ed] mb-2">
             {t("title")}
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-[#a5a39c] max-w-xl mx-auto">
             {t("subtitle", { platform: platformName })}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {steps.map((step, idx) => {
+        {/* 3 columns first row, 2 columns second row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {steps.slice(0, 3).map((step, idx) => {
             const Icon = step.icon;
             return (
               <Card
                 key={idx}
-                className={`group relative overflow-hidden border-white/10 bg-white/[0.02] transition-all duration-300 p-6 flex flex-col justify-between ${
+                className={`group relative overflow-hidden border-white/[0.08] bg-[#101010]/70 transition-all duration-300 p-5 flex flex-col justify-between ${
                   isLinkedIn
-                    ? "hover:border-sky-500/40 hover:bg-sky-950/10"
-                    : "hover:border-[#d4af37]/40 hover:bg-white/[0.04]"
+                    ? "hover:border-sky-500/30 hover:bg-[#0e1724]"
+                    : "hover:border-[#e7b92f]/30 hover:bg-[#14130f]"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform group-hover:scale-110 ${
+                      className={`flex h-9 w-9 items-center justify-center rounded-xl transition-transform group-hover:scale-105 ${
                         isLinkedIn
-                          ? "bg-sky-500/10 border border-sky-500/30 text-sky-400"
-                          : "bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#d4af37]"
+                          ? "bg-sky-500/10 border border-sky-500/20 text-sky-400"
+                          : "bg-[#e7b92f]/10 border border-[#e7b92f]/20 text-[#e7b92f]"
                       }`}
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-4.5 w-4.5" />
                     </div>
                     <span
-                      className={`text-2xl font-black text-white/20 transition-colors ${
+                      className={`text-xl font-bold text-white/15 transition-colors ${
                         isLinkedIn
-                          ? "group-hover:text-sky-400/50"
-                          : "group-hover:text-[#d4af37]/40"
+                          ? "group-hover:text-sky-400/30"
+                          : "group-hover:text-[#e7b92f]/30"
                       }`}
                     >
                       {step.num}
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold text-white mb-2">
+                  <h3 className="text-sm font-semibold text-[#f5f3ed] mb-1.5">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-[#a5a39c] leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 max-w-3xl mx-auto">
+          {steps.slice(3, 5).map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <Card
+                key={idx + 3}
+                className={`group relative overflow-hidden border-white/[0.08] bg-[#101010]/70 transition-all duration-300 p-5 flex flex-col justify-between ${
+                  isLinkedIn
+                    ? "hover:border-sky-500/30 hover:bg-[#0e1724]"
+                    : "hover:border-[#e7b92f]/30 hover:bg-[#14130f]"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div
+                      className={`flex h-9 w-9 items-center justify-center rounded-xl transition-transform group-hover:scale-105 ${
+                        isLinkedIn
+                          ? "bg-sky-500/10 border border-sky-500/20 text-sky-400"
+                          : "bg-[#e7b92f]/10 border border-[#e7b92f]/20 text-[#e7b92f]"
+                      }`}
+                    >
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <span
+                      className={`text-xl font-bold text-white/15 transition-colors ${
+                        isLinkedIn
+                          ? "group-hover:text-sky-400/30"
+                          : "group-hover:text-[#e7b92f]/30"
+                      }`}
+                    >
+                      {step.num}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-semibold text-[#f5f3ed] mb-1.5">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-[#a5a39c] leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -105,4 +151,3 @@ export function HowItWorks() {
     </section>
   );
 }
-

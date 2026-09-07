@@ -109,7 +109,7 @@ export function PdfExportDialog({
         ref={modalRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="overflow-hidden max-w-2xl max-h-[90vh] flex flex-col p-4 sm:p-6 bg-neutral-950/95 border-white/15"
+        className="overflow-hidden max-w-2xl max-h-[90vh] flex flex-col p-4 sm:p-6 bg-[#101010]/98 border-white/[0.1]"
       >
         {/* Flashlight background spotlight */}
         {mousePos && (
@@ -117,25 +117,8 @@ export function PdfExportDialog({
             className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-150"
             style={{
               background: isLinkedIn
-                ? `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.16), rgba(14, 165, 233, 0.04) 45%, transparent 75%)`
-                : `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.20), rgba(232, 163, 61, 0.05) 45%, transparent 75%)`,
-            }}
-          />
-        )}
-
-        {/* Dynamic flashlight glowing border */}
-        {mousePos && (
-          <div
-            className="pointer-events-none absolute -inset-[1px] rounded-2xl z-30 transition-opacity duration-150"
-            style={{
-              background: isLinkedIn
-                ? `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.9), transparent 70%)`
-                : `radial-gradient(320px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.95), transparent 70%)`,
-              WebkitMask:
-                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-              padding: "1.5px",
+                ? `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.1), transparent 70%)`
+                : `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(231, 185, 47, 0.1), transparent 70%)`,
             }}
           />
         )}
@@ -145,27 +128,27 @@ export function PdfExportDialog({
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-lg ${
                 isLinkedIn
-                  ? "bg-sky-500/20 text-sky-400 border border-sky-500/30"
-                  : "bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30"
+                  ? "bg-sky-500/15 text-sky-400 border border-sky-500/25"
+                  : "bg-[#e7b92f]/15 text-[#e7b92f] border border-[#e7b92f]/25"
               }`}
             >
               <FileText className="h-4 w-4" />
             </div>
-            <DialogTitle className="text-base sm:text-lg font-bold">
+            <DialogTitle className="text-base sm:text-lg font-bold text-[#f5f3ed]">
               PDF Export & Layout Settings
             </DialogTitle>
           </div>
-          <DialogDescription className="text-xs text-neutral-400">
+          <DialogDescription className="text-xs text-[#a5a39c]">
             Drag slides to reorder the PDF pages, and customize page sizing and orientation.
           </DialogDescription>
         </DialogHeader>
 
         {/* Options Row */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 my-2">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.08] my-2">
           {/* Page Size Selection */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5">
-              <Layout className="h-3.5 w-3.5 text-[#d4af37]" />
+            <label className="text-xs font-semibold text-[#f5f3ed] flex items-center gap-1.5">
+              <Layout className="h-3.5 w-3.5 text-[#e7b92f]" />
               <span>Page Size</span>
             </label>
             <div className="grid grid-cols-3 gap-1.5">
@@ -182,8 +165,8 @@ export function PdfExportDialog({
                     pageSize === opt.id
                       ? isLinkedIn
                         ? "bg-sky-500/20 border-sky-400 text-white font-semibold"
-                        : "bg-[#d4af37]/20 border-[#d4af37] text-white font-semibold"
-                      : "bg-white/5 border-white/10 text-neutral-400 hover:text-white hover:bg-white/10"
+                        : "bg-[#e7b92f]/20 border-[#e7b92f] text-white font-semibold"
+                      : "bg-white/[0.04] border-white/[0.08] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.08]"
                   }`}
                 >
                   {opt.label}
@@ -194,8 +177,8 @@ export function PdfExportDialog({
 
           {/* Orientation Selection */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5">
-              <ArrowUpDown className="h-3.5 w-3.5 text-[#d4af37]" />
+            <label className="text-xs font-semibold text-[#f5f3ed] flex items-center gap-1.5">
+              <ArrowUpDown className="h-3.5 w-3.5 text-[#e7b92f]" />
               <span>Orientation</span>
             </label>
             <div className="grid grid-cols-3 gap-1.5">
@@ -212,8 +195,8 @@ export function PdfExportDialog({
                     orientation === opt.id
                       ? isLinkedIn
                         ? "bg-sky-500/20 border-sky-400 text-white font-semibold"
-                        : "bg-[#d4af37]/20 border-[#d4af37] text-white font-semibold"
-                      : "bg-white/5 border-white/10 text-neutral-400 hover:text-white hover:bg-white/10"
+                        : "bg-[#e7b92f]/20 border-[#e7b92f] text-white font-semibold"
+                      : "bg-white/[0.04] border-white/[0.08] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.08]"
                   }`}
                 >
                   {opt.label}
@@ -226,7 +209,7 @@ export function PdfExportDialog({
         {/* Reorderable Slides Grid */}
         <div className="relative z-10 flex-1 overflow-y-auto pr-1 min-h-[200px] max-h-[340px] space-y-2">
           <div className="flex items-center justify-between pb-1">
-            <span className="text-xs font-medium text-neutral-400">
+            <span className="text-xs font-medium text-[#a5a39c]">
               {items.length} page(s) — Drag or use arrows to change order
             </span>
           </div>
@@ -239,14 +222,14 @@ export function PdfExportDialog({
                 onDragStart={() => handleDragStart(idx)}
                 onDragOver={(e) => handleDragOver(e, idx)}
                 onDragEnd={handleDragEnd}
-                className={`group relative flex flex-col rounded-xl border p-1.5 bg-neutral-900/80 transition-all select-none cursor-grab active:cursor-grabbing ${
+                className={`group relative flex flex-col rounded-xl border p-1.5 bg-[#0d0d0d] transition-all select-none cursor-grab active:cursor-grabbing ${
                   draggedIdx === idx
-                    ? "border-[#d4af37] opacity-60 scale-95"
-                    : "border-white/10 hover:border-white/30"
+                    ? "border-[#e7b92f] opacity-60 scale-95"
+                    : "border-white/[0.08] hover:border-white/[0.25]"
                 }`}
               >
                 {/* Thumbnail Preview */}
-                <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-neutral-950">
+                <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-[#080808]">
                   <img
                     src={`/api/thumbnail?token=${encodeURIComponent(
                       item.thumbnailToken
@@ -255,7 +238,7 @@ export function PdfExportDialog({
                     className="h-full w-full object-cover pointer-events-none"
                   />
                   {/* Page number badge */}
-                  <span className="absolute top-1.5 left-1.5 rounded-md bg-black/80 px-1.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-md border border-white/10">
+                  <span className="absolute top-1.5 left-1.5 rounded-md bg-black/80 px-1.5 py-0.5 text-[10px] font-bold text-[#f5f3ed] backdrop-blur-md border border-white/[0.08]">
                     Pg {idx + 1}
                   </span>
                 </div>
@@ -267,19 +250,19 @@ export function PdfExportDialog({
                     disabled={idx === 0}
                     onClick={() => moveItem(idx, idx - 1)}
                     aria-label={`Move page ${idx + 1} left`}
-                    className="p-1 rounded bg-white/5 text-neutral-300 hover:text-white hover:bg-white/15 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                    className="p-1 rounded bg-white/[0.04] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.1] disabled:opacity-25 disabled:pointer-events-none transition-colors"
                   >
                     <ChevronLeft className="h-3.5 w-3.5" />
                   </button>
 
-                  <GripVertical className="h-3.5 w-3.5 text-neutral-500 group-hover:text-neutral-300" />
+                  <GripVertical className="h-3.5 w-3.5 text-[#6f6d66] group-hover:text-[#a5a39c]" />
 
                   <button
                     type="button"
                     disabled={idx === items.length - 1}
                     onClick={() => moveItem(idx, idx + 1)}
                     aria-label={`Move page ${idx + 1} right`}
-                    className="p-1 rounded bg-white/5 text-neutral-300 hover:text-white hover:bg-white/15 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                    className="p-1 rounded bg-white/[0.04] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.1] disabled:opacity-25 disabled:pointer-events-none transition-colors"
                   >
                     <ChevronRight className="h-3.5 w-3.5" />
                   </button>
@@ -289,14 +272,14 @@ export function PdfExportDialog({
           </div>
         </div>
 
-        <DialogFooter className="relative z-10 pt-3 border-t border-white/10 flex flex-row items-center justify-end gap-2">
+        <DialogFooter className="relative z-10 pt-3 border-t border-white/[0.08] flex flex-row items-center justify-end gap-2">
           <Button
             type="button"
             variant="outline"
             size="sm"
             onClick={onClose}
             disabled={isExporting}
-            className="border-white/15 text-neutral-300 hover:bg-white/10 cursor-pointer"
+            className="border-white/[0.1] text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.06] cursor-pointer"
           >
             Cancel
           </Button>
@@ -308,8 +291,8 @@ export function PdfExportDialog({
             disabled={isExporting || items.length === 0}
             className={`font-semibold cursor-pointer ${
               isLinkedIn
-                ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-md shadow-blue-500/25"
-                : "gold-gradient-bg text-neutral-950 shadow-md shadow-[#d4af37]/20"
+                ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-sm shadow-blue-500/25"
+                : "gold-gradient-bg text-[#080808] shadow-sm shadow-[#e7b92f]/20"
             }`}
           >
             {isExporting ? (

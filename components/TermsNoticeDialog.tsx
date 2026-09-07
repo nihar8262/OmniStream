@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { ShieldAlert, CheckCircle2 } from "lucide-react";
+import { ShieldAlert } from "lucide-react";
 
 export function TermsNoticeDialog() {
   const t = useTranslations("termsModal");
@@ -62,33 +62,32 @@ export function TermsNoticeDialog() {
         link.click();
         document.body.removeChild(link);
       }
-      // For zip or pdf, the toolbar or store will pick up the accepted terms
     }
   };
 
   return (
     <Dialog open={isTermsModalOpen} onOpenChange={setIsTermsModalOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-[#101010] border-white/[0.1]">
         <DialogHeader>
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#d4af37]">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e7b92f]/10 border border-[#e7b92f]/25 text-[#e7b92f]">
             <ShieldAlert className="h-6 w-6" />
           </div>
           <DialogTitle className="text-center text-lg font-bold gold-gradient-text">
             {t("title")}
           </DialogTitle>
-          <DialogDescription className="text-center text-xs text-neutral-300">
+          <DialogDescription className="text-center text-xs text-[#a5a39c]">
             {t("description")}
           </DialogDescription>
         </DialogHeader>
 
-        <div className="my-3 rounded-xl border border-white/10 bg-black/40 p-3 sm:p-4">
+        <div className="my-3 rounded-xl border border-white/[0.08] bg-[#0a0a0a] p-3 sm:p-4">
           <label className="flex items-start gap-2.5 sm:gap-3 cursor-pointer">
             <Checkbox
               checked={checked}
               onCheckedChange={(val) => setChecked(Boolean(val))}
               className="mt-0.5 shrink-0"
             />
-            <span className="text-xs text-neutral-300 leading-relaxed select-none">
+            <span className="text-xs text-[#a5a39c] leading-relaxed select-none">
               {t("affirmation")}
             </span>
           </label>
@@ -108,7 +107,7 @@ export function TermsNoticeDialog() {
           <Button
             onClick={handleAgreeAndProceed}
             disabled={!checked}
-            className="w-full sm:w-auto gold-gradient-bg text-neutral-950 font-semibold text-xs disabled:opacity-40 cursor-pointer"
+            className="w-full sm:w-auto gold-gradient-bg text-[#080808] font-semibold text-xs disabled:opacity-40 cursor-pointer"
           >
             {t("continue")}
           </Button>

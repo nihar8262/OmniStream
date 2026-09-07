@@ -4,30 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4af37] disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7b92f]/50 disabled:pointer-events-none disabled:opacity-40 active:scale-[0.98]",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-[#d4af37] to-[#e8a33d] text-neutral-950 font-semibold shadow-lg shadow-[#d4af37]/20 hover:shadow-[#d4af37]/40 hover:brightness-110",
+          "bg-gradient-to-r from-[#e7b92f] to-[#d89f20] text-[#080808] font-semibold shadow-md shadow-[#e7b92f]/15 hover:shadow-[#e7b92f]/25 hover:brightness-105",
         gold:
-          "bg-[#d4af37] text-neutral-950 font-semibold hover:bg-[#e5bf43] shadow-md shadow-[#d4af37]/20",
+          "bg-[#e7b92f] text-[#080808] font-semibold hover:bg-[#f0c94b] shadow-sm shadow-[#e7b92f]/15",
         secondary:
-          "bg-white/10 text-white hover:bg-white/15 border border-white/10 backdrop-blur-md",
+          "bg-white/[0.06] text-[#f5f3ed] hover:bg-white/[0.1] border border-white/[0.08] backdrop-blur-md",
         outline:
-          "border border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10 hover:border-[#d4af37]",
+          "border border-white/[0.12] text-[#f5f3ed] hover:bg-white/[0.06] hover:border-white/[0.2]",
         ghost:
-          "text-neutral-300 hover:text-white hover:bg-white/5",
+          "text-[#a5a39c] hover:text-[#f5f3ed] hover:bg-white/[0.05]",
         destructive:
-          "bg-red-500/20 text-red-400 border border-red-500/30 hover:bg-red-500/30",
+          "bg-red-500/15 text-red-300 border border-red-500/25 hover:bg-red-500/25",
         glass:
-          "bg-white/5 backdrop-blur-xl border border-white/10 text-white hover:border-[#d4af37]/50 hover:bg-white/10 shadow-lg shadow-black/40",
+          "bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] text-[#f5f3ed] hover:border-white/[0.18] hover:bg-white/[0.08] shadow-lg shadow-black/30",
       },
       size: {
-        default: "h-11 px-5 py-2",
-        sm: "h-9 rounded-lg px-3.5 text-xs",
-        lg: "h-13 rounded-2xl px-8 text-base font-semibold",
-        icon: "h-10 w-10",
+        default: "h-10 px-4 py-2 text-xs sm:text-sm",
+        sm: "h-8 rounded-lg px-3 text-xs",
+        lg: "h-12 rounded-xl px-6 text-sm font-semibold",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {

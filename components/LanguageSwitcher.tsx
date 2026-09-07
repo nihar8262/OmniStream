@@ -8,7 +8,6 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 import { Globe } from "lucide-react";
 
@@ -42,13 +41,13 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         onValueChange={handleLocaleChange}
         disabled={isPending}
       >
-        <SelectTrigger aria-label="Select Interface Language" className="h-8 sm:h-9 w-[105px] sm:w-[130px] border-white/10 bg-white/5 text-xs font-medium hover:border-[#d4af37]/40 focus:ring-[#d4af37] px-2 sm:px-3">
+        <SelectTrigger aria-label="Select Interface Language" className="h-8.5 sm:h-9 w-[110px] sm:w-[135px] border-white/[0.08] bg-white/[0.04] text-xs font-medium hover:border-white/[0.18] focus:ring-[#e7b92f]/40 px-2.5 sm:px-3 rounded-xl">
           <div className="flex items-center gap-1.5 truncate">
-            <Globe className="h-3.5 w-3.5 shrink-0 text-[#d4af37]" />
+            <Globe className="h-3.5 w-3.5 shrink-0 text-[#e7b92f]" />
             <span className="truncate">{currentLang.flag} {currentLang.label}</span>
           </div>
         </SelectTrigger>
-        <SelectContent align="end" className="bg-neutral-900/95 border-white/15">
+        <SelectContent align="end" className="bg-[#121212]/95 border-white/[0.1] rounded-xl shadow-2xl">
           {languages.map((lang) => (
             <SelectItem
               key={lang.code}
