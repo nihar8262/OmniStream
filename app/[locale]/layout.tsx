@@ -41,13 +41,13 @@ export const metadata: Metadata = {
   publisher: "OmniStream",
   applicationName: "OmniStream",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://omnistream.vercel.app"
+    process.env.NEXT_PUBLIC_APP_URL || "https://omnistream-ochre.vercel.app"
   ),
   openGraph: {
     title: "OmniStream — Universal Social Media Downloader (Instagram & LinkedIn)",
     description:
       "Fast, private, and free tool to download public Instagram and LinkedIn photos, videos, carousels, and document slides. Convert to PDF or bundle into a single ZIP archive.",
-    url: "https://omnistream.vercel.app",
+    url: "https://omnistream-ochre.vercel.app",
     siteName: "OmniStream",
     images: [
       {
